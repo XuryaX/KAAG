@@ -1,28 +1,33 @@
-# kaag//kaag/analyzers/topic_analyzer.py
+# kaag/analyzers/topic_analyzer.py
 
 from .base_analyzer import BaseAnalyzer
-from typing import Dict, Any
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from typing import Dict, Any, List
+from sklearn.decomposition import LatentDirichletAllocation
+from sklearn.feature_extraction.text import CountVectorizer
+import numpy as np
 
 class TopicAnalyzer(BaseAnalyzer):
-    def __init__(self):
-        self.previous_text = ""
-        self.previous_vector = None
+    def __init__(self, num_topics: int = 5):
+        self.num_topics = num_topics
+        self.lda_model = LatentDirichletAllocation(n_components=num_topics, random_state=42)
+        self.vectorizer = CountVectorizer(max_df=0.95, min_df=2, stop_words='english')
+        self.conversation_history: List[str] = []
 
     def analyze(self, user_input: str, ai_response: str, context: Dict[str, Any]) -> Dict[str, float]:
-        current_text = user_input + " " + ai_response
+        self.conversation_history.append(user_input + " " + ai_response)
+        
+        if len(self.conversation_history) < 2:
+            return {"topic_coherence": 1.0}
 
-        vectorizer = TfidfVectorizer(lowercase=True)
-        if self.previous_text:
-            corpus = [self.previous_text, current_text]
-            vectors = vectorizer.fit_transform(corpus)
-            previous_vector = vectors[0]
-            current_vector = vectors[1]
-            topic_coherence = cosine_similarity(previous_vector, current_vector)[0][0]
-        else:
-            topic_coherence = 1.0  # Initial coherence is 1
+        dtm = self.vectorizer.fit_transform(self.conversation_history)
+        lda_output = self.lda_model.fit_transform(dtm)
 
-        self.previous_text = current_text
-
+        topic_coherence = self._calculate_topic_coherence(lda_output)
         return {"topic_coherence": topic_coherence}
+
+    def _calculate_topic_coherence(self, lda_output: np.ndarray) -> float:
+        # Implement topic coherence calculation
+        # This is a simplified version, you might want to use a more sophisticated method
+        topic_differences = np.diff(lda_output, axis=0)
+        coherence = 1 - np.mean(np.abs(topic_differences))
+        return coherence

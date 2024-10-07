@@ -1,5 +1,0 @@
-2024-10-06 17:03:08,744 - INFO - Conversation ended
-2024-10-06 17:03:37,676 - INFO - Conversation ended
-2024-10-06 17:17:16,082 - INFO - Conversation ended
-2024-10-06 17:29:08,516 - INFO - Conversation ended
-2024-10-06 17:30:29,643 - INFO - Conversation ended

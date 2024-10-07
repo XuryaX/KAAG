@@ -1,34 +1,47 @@
+# sales_client_config.yaml
+
 metrics:
   trust:
     min: 0
     max: 100
     initial: 50
+    decay_factor: 0.95
   interest:
     min: 0
     max: 100
     initial: 30
+    decay_factor: 0.95
   comprehension:
     min: 0
     max: 100
     initial: 20
+    decay_factor: 0.98
   budget_alignment:
     min: 0
     max: 100
     initial: 50
+    decay_factor: 0.97
   urgency:
     min: 0
     max: 100
     initial: 10
+    decay_factor: 0.99
 
 custom_metrics:
   technical_depth:
-    keywords: ["algorithm", "encryption", "protocol", "blockchain"]
+    keywords: ["algorithm", "encryption", "protocol", "blockchain", "Lightning Network", "scalability"]
     weight: 0.5
     max: 1
   price_sensitivity:
-    regex: "(?:cost|price|expensive|affordable)"
+    regex: "(?:cost|price|expensive|affordable|budget|investment)"
     weight: 0.3
     max: 1
+
+technical_concepts:
+  Lightning Network: "A second-layer payment protocol that operates on top of a blockchain-based cryptocurrency to enable fast transactions among participating nodes."
+  Blockchain: "A distributed ledger technology that maintains a growing list of records, called blocks, that are securely linked using cryptography."
+  Scalability: "The capability of a system, network, or process to handle a growing amount of work, or its potential to be enlarged to accommodate that growth."
+  Micropayments: "Financial transactions involving very small sums of money, typically conducted online."
 
 stages:
   - id: initial_contact
@@ -37,31 +50,31 @@ stages:
       trust: [0, 70]
     instructions: |
       You are cautious but polite. Express mild interest in learning more.
-      Ask for a brief overview of the offering.
+      Ask for a brief overview of the offering, focusing on how it relates to your fintech startup's needs.
     custom_responses:
-      low_trust: "I appreciate your call, but I'm not sure we're in the market for new solutions right now."
-      high_urgency: "Your timing is interesting. We've been grappling with some payment issues lately. What can you tell me about your services?"
+      low_trust: "I appreciate your call, but I'm not sure we're in the market for new solutions right now. Can you briefly explain how your offering specifically addresses fintech challenges?"
+      high_urgency: "Your timing is interesting. We've been grappling with some payment infrastructure issues lately. What can you tell me about your Learning & Development services in relation to payment systems?"
 
   - id: needs_assessment
     conditions:
       interest: [30, 80]
       comprehension: [20, 70]
     instructions: |
-      Share challenges your startup is facing with payment infrastructure.
-      Ask targeted questions about how Learning & Development services address these problems.
+      Share specific challenges your fintech startup is facing with payment infrastructure, focusing on scalability and transaction costs.
+      Ask targeted questions about how the Learning & Development services address these problems, particularly in relation to the Lightning Network and blockchain technology.
     custom_responses:
-      high_interest_low_comprehension: "This sounds promising, but I'm not sure I fully understand. Could you break it down in simpler terms?"
+      high_interest_low_comprehension: "This sounds promising, but I'm not fully grasping how it applies to our specific needs. Could you break down how your Learning & Development services would integrate with our existing blockchain-based systems?"
 
   - id: solution_presentation
     conditions:
       interest: [50, 100]
       comprehension: [40, 90]
     instructions: |
-      Listen attentively to the presentation.
-      Ask for clarification on points you don't fully understand.
-      Express enthusiasm for features that align with your needs.
+      Listen attentively to the presentation, focusing on technical details related to the Lightning Network and scalability solutions.
+      Ask for clarification on points you don't fully understand, particularly around implementation and integration with existing systems.
+      Express enthusiasm for features that directly address your startup's payment infrastructure challenges.
     custom_responses:
-      high_comprehension: "That makes a lot of sense. How have other fintech companies implemented this?"
+      high_comprehension: "I see how this could potentially solve our scalability issues. Can you provide more details on how your Learning & Development services have helped other fintech companies implement Lightning Network solutions?"
 
   - id: objection_handling
     conditions:
@@ -69,10 +82,10 @@ stages:
       budget_alignment: [0, 70]
       comprehension: [60, 100]
     instructions: |
-      Raise specific concerns about cost, security, and implementation complexity.
-      Be more direct with objections if trust is lower.
+      Raise specific concerns about implementation complexity, security implications, and cost-effectiveness of the Learning & Development services.
+      Be more direct with objections if trust is lower, focusing on potential risks and the need for proven results in the fintech sector.
     custom_responses:
-      low_trust_high_comprehension: "I understand the technology, but I'm not convinced it's the right fit for us. Can you address [specific concern]?"
+      low_trust_high_comprehension: "I understand the technology, but I'm not entirely convinced it's the right fit for our startup at this stage. Can you address our concerns about [specific technical or implementation challenge]?"
 
   - id: closing
     conditions:
@@ -81,40 +94,40 @@ stages:
       comprehension: [90, 100]
       budget_alignment: [80, 100]
     instructions: |
-      If all metrics are high, express readiness to purchase and discuss next steps.
-      If any metric is lacking, suggest scheduling a follow-up meeting with specific goals.
+      If all metrics are high, express readiness to move forward with a pilot program or initial implementation of the Learning & Development services.
+      Discuss specific next steps, including technical integration planning and potential ROI projections.
+      If any metric is lacking, suggest scheduling a follow-up meeting with your technical team to address any remaining concerns or questions.
     custom_responses:
-      all_metrics_high: "This sounds like exactly what we need. Let's move forward. What are the next steps to get started?"
+      all_metrics_high: "This Learning & Development solution seems to address our scalability and transaction cost challenges effectively. Let's discuss the specifics of a pilot program. What would be the first steps in integrating this with our existing blockchain infrastructure?"
 
 global_instructions: |
-  You are an AI representing a potential client at a tech startup interested in Learning & Development services.
-  Maintain a tech-savvy but cautious persona throughout the conversation.
+  You are an AI representing a potential client at a fintech startup interested in improving your payment infrastructure through Learning & Development services.
+  Maintain a tech-savvy but cautious persona throughout the conversation, with a focus on blockchain technology and scalability solutions.
   Your responses should reflect your current levels of all metrics (trust, interest, comprehension, budget alignment, and urgency).
-  Engage naturally in the conversation, asking questions and expressing concerns as appropriate.
-  Be like a real person and only generate text that would adhere to a response by a human.
+  Engage naturally in the conversation, asking detailed technical questions and expressing concerns as appropriate for a CTO of a growing fintech startup.
 
 triggers:
-  - condition: "trust < 20"
-    action: "end_call"
-    message: "I'm sorry, but I don't feel comfortable continuing this conversation. Please send any additional information by email."
+  - condition: "trust < 20 and comprehension > 50"
+    action: "express_skepticism"
+    message: "I appreciate the detailed explanation, but I'm not convinced that this solution aligns with our specific needs. Perhaps we should revisit this conversation when we've had more time to assess our infrastructure requirements."
   
   - condition: "interest > 90 and budget_alignment > 80 and urgency > 70"
     action: "fast_track"
-    message: "This sounds exactly like what we need, and our timeline is tight. Can we discuss immediate implementation and perhaps expedite the process?"
+    message: "This Learning & Development service seems to be exactly what we need to address our scalability issues, and our timeline is quite tight. Can we discuss immediate implementation steps and perhaps expedite the integration process?"
 
 llm:
   api_key: "your_openai_api_key_here"
   config:
     model: "gpt-4"
     temperature: 0.7
-    max_tokens: 150
+    max_tokens: 250
 
 simulation:
-  max_turns: 20
+  max_turns: 25
   end_phrases:
     - "end the call"
-    - "purchase the service"
     - "schedule a follow-up"
+    - "proceed with implementation"
   logging:
     enabled: true
     level: "INFO"

@@ -1,3 +1,5 @@
+# kaag/evaluation/run_evaluation.py
+
 import os
 import sys
 import csv
@@ -11,12 +13,14 @@ from kaag.core.metrics import MetricsManager
 from kaag.core.stages import StageManager
 from kaag.core.dbn import DynamicBayesianNetwork
 from kaag.models.llm.ollama import OllamaLLM
+from kaag.models.retriever.static_retriever import StaticDBRetriever
 from kaag.analyzers.sentiment_analyzer import SentimentAnalyzer
 from kaag.analyzers.topic_analyzer import TopicAnalyzer
 from kaag.analyzers.custom_metric_analyzer import CustomMetricAnalyzer
+from kaag.analyzers.technical_concept_analyzer import TechnicalConceptAnalyzer
 from kaag.utils.config import load_config
-from framework import EvaluationFramework
-
+from evaluation.framework import EvaluationFramework
+from kaag.simulation.simulator import Simulator
 
 def load_transcript(file_path: str) -> List[Dict[str, str]]:
     with open(file_path, 'r') as f:
@@ -33,9 +37,27 @@ def ensure_textblob_corpora():
     try:
         from textblob import TextBlob
         TextBlob("Test").words
-    except textblob.exceptions.MissingCorpusError:
+    except TextBlob.exceptions.MissingCorpusError:
         print("Downloading required TextBlob corpora...")
         download_corpora()
+
+def create_simulator(config: Dict) -> Simulator:
+    metrics_manager = MetricsManager(config['metrics'])
+    stage_manager = StageManager(config['stages'])
+    dbn = DynamicBayesianNetwork(metrics_manager, stage_manager)
+
+    llm = OllamaLLM()
+    
+    retriever = StaticDBRetriever()
+    
+    analyzers = [
+        SentimentAnalyzer(),
+        TopicAnalyzer(),
+        CustomMetricAnalyzer(config['custom_metrics']),
+        TechnicalConceptAnalyzer(config['technical_concepts'])
+    ]
+    
+    return Simulator(dbn, llm, retriever, config, analyzers)
 
 def run_evaluation():
     try:
@@ -51,23 +73,17 @@ def run_evaluation():
         transcript_path = os.path.join(os.path.dirname(__file__), '..', 'conversation_transcript.txt')
         transcript = load_transcript(transcript_path)
 
-        # Initialize components
-        metrics_manager = MetricsManager(config['metrics'])
-        stage_manager = StageManager(config['stages'])
-        dbn = DynamicBayesianNetwork(metrics_manager, stage_manager)
-        llm = OllamaLLM()
-
-        # Define analyzers for each approach
-        base_analyzers = []
-        rag_analyzers = [SentimentAnalyzer(), TopicAnalyzer()]
-        kaag_analyzers = [SentimentAnalyzer(), TopicAnalyzer(), CustomMetricAnalyzer(config['custom_metrics'])]
+        # Create simulators for each model type
+        base_simulator = create_simulator(config)
+        rag_simulator = create_simulator(config)  # In this case, RAG is represented by the same setup
+        kaag_simulator = create_simulator(config)
 
         # Create evaluation frameworks
-        base_framework = EvaluationFramework(dbn, llm, config, base_analyzers)
-        rag_framework = EvaluationFramework(dbn, llm, config, rag_analyzers)
-        kaag_framework = EvaluationFramework(dbn, llm, config, kaag_analyzers)
+        base_framework = EvaluationFramework(base_simulator.dbn, base_simulator.llm, base_simulator.config, base_simulator.analyzers)
+        rag_framework = EvaluationFramework(rag_simulator.dbn, rag_simulator.llm, rag_simulator.config, rag_simulator.analyzers)
+        kaag_framework = EvaluationFramework(kaag_simulator.dbn, kaag_simulator.llm, kaag_simulator.config, kaag_simulator.analyzers)
 
-       # Run evaluations
+        # Run evaluations
         base_results = base_framework.evaluate_conversation(transcript)
         rag_results = rag_framework.evaluate_conversation(transcript)
         kaag_results = kaag_framework.evaluate_conversation(transcript)

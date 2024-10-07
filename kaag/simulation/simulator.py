@@ -5,13 +5,15 @@ from ..core.dbn import DynamicBayesianNetwork
 from ..models.llm.base import BaseLLM
 from ..analyzers.base_analyzer import BaseAnalyzer
 from ..models.retriever.base import BaseRetriever
+from ..models.knowledge_integrator import KnowledgeIntegrator
 import logging
 
 class Simulator:
-    def __init__(self, dbn: DynamicBayesianNetwork, llm: BaseLLM, retriever: BaseRetriever, config: Dict[str, Any], analyzers: List[BaseAnalyzer]):
+    def __init__(self, dbn: DynamicBayesianNetwork, llm: BaseLLM, retriever: BaseRetriever, knowledge_integrator: KnowledgeIntegrator, config: Dict[str, Any], analyzers: List[BaseAnalyzer]):
         self.dbn = dbn
         self.llm = llm
         self.retriever = retriever
+        self.knowledge_integrator = knowledge_integrator
         self.config = config
         self.analyzers = analyzers
         self.turn_count = 0
@@ -30,10 +32,13 @@ class Simulator:
             return "Maximum turns reached. Ending conversation."
 
         context = self._generate_context(user_input)
-        ai_response = self.llm.generate(context)
+        plan = self._generate_plan(context)
+        ai_response = self._generate_response(context, plan)
 
         analysis_results = self._analyze_interaction(user_input, ai_response, context)
         self.dbn.update(analysis_results, user_input, ai_response)
+
+        self._self_reflect(context, plan, ai_response, analysis_results)
 
         trigger = self.dbn.check_triggers(self.config['triggers'])
         if trigger:
@@ -46,21 +51,43 @@ class Simulator:
 
         return ai_response
 
-    def _generate_context(self, user_input: str) -> str:
+    def _generate_context(self, user_input: str) -> Dict[str, Any]:
         dbn_context = self.dbn.get_context()
         retrieved_knowledge = self.retriever.retrieve(user_input)
+        integrated_knowledge = self.knowledge_integrator.integrate(user_input, dbn_context)
         
-        context = f"""
-        Current interaction stage: {dbn_context['current_stage']}
-        Stage-specific instructions: {self.dbn.current_stage.instructions}
-        Global instructions: {self.config['global_instructions']}
-        Current metrics state: {dbn_context['metrics']}
-        Conversation history: {self._format_conversation_history(dbn_context['conversation_history'])}
-        Relevant knowledge: {retrieved_knowledge}
-        User's last input: {user_input}
-        Your response:
+        return {
+            **dbn_context,
+            "retrieved_knowledge": retrieved_knowledge,
+            "integrated_knowledge": integrated_knowledge,
+            "user_input": user_input
+        }
+
+    def _generate_plan(self, context: Dict[str, Any]) -> str:
+        plan_prompt = f"""
+        Given the following context, generate a plan for the next response:
+        Current stage: {context['current_stage']}
+        Metrics: {context['metrics']}
+        User input: {context['user_input']}
+        Integrated knowledge: {context['integrated_knowledge']}
+
+        Plan:
         """
-        return context
+        return self.llm.generate(plan_prompt)
+
+    def _generate_response(self, context: Dict[str, Any], plan: str) -> str:
+        response_prompt = f"""
+        Context:
+        Current stage: {context['current_stage']}
+        Metrics: {context['metrics']}
+        User input: {context['user_input']}
+        Integrated knowledge: {context['integrated_knowledge']}
+        
+        Plan: {plan}
+        
+        Generate a response based on the above context and plan:
+        """
+        return self.llm.generate(response_prompt)
 
     def _analyze_interaction(self, user_input: str, ai_response: str, context: Dict[str, Any]) -> Dict[str, float]:
         results = {}
@@ -71,5 +98,17 @@ class Simulator:
                 logging.error(f"Error in {analyzer.__class__.__name__}: {str(e)}")
         return results
 
-    def _format_conversation_history(self, history: List[tuple]) -> str:
-        return "\n".join([f"User: {turn[0]}\nAI: {turn[1]}" for turn in history])
+    def _self_reflect(self, context: Dict[str, Any], plan: str, ai_response: str, analysis_results: Dict[str, float]):
+        reflection_prompt = f"""
+        Context: {context}
+        Plan: {plan}
+        AI Response: {ai_response}
+        Analysis Results: {analysis_results}
+        
+        Reflect on the interaction and suggest improvements:
+        """
+        reflection = self.llm.generate(reflection_prompt)
+        logging.info(f"Self-reflection: {reflection}")
+
+        # Use reflection to adjust the DBN or other components
+        self.dbn.learn_from_success(analysis_results.get('satisfaction_score', 0.5))

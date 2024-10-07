@@ -2,15 +2,23 @@
 
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import CountVectorizer
 from textblob import TextBlob
-from typing import List
+from typing import List, Union, Dict, Any
 import nltk
 from nltk.tokenize import sent_tokenize
 from collections import Counter
 
 nltk.download('punkt', quiet=True)
 
-def calculate_context_score(generated_response: str, expected_response: str) -> float:
+def calculate_context_score(generated_response: str, expected_response: str, context: Dict[str, Any]) -> float:
+    # Implement more sophisticated context scoring
+    short_term_score = _calculate_short_term_context(generated_response, expected_response)
+    long_term_score = _calculate_long_term_context(generated_response, context)
+    return 0.4 * short_term_score + 0.6 * long_term_score
+
+def _calculate_short_term_context(generated_response: str, expected_response: str) -> float:
+    # Existing implementation
     generated_blob = TextBlob(generated_response)
     expected_blob = TextBlob(expected_response)
     
@@ -23,14 +31,30 @@ def calculate_context_score(generated_response: str, expected_response: str) -> 
     
     return cosine_similarity([generated_vec], [expected_vec])[0][0]
 
-def calculate_adaptation_score(previous_metrics: dict, current_metrics: dict) -> float:
+def _calculate_long_term_context(generated_response: str, context: Dict[str, Any]) -> float:
+    conversation_history = context.get('conversation_history', [])
+    if not conversation_history:
+        return 1.0
+    
+    history_text = ' '.join([f"{turn[0]} {turn[1]}" for turn in conversation_history])
+    vectorizer = CountVectorizer().fit([history_text, generated_response])
+    history_vector = vectorizer.transform([history_text])
+    response_vector = vectorizer.transform([generated_response])
+    
+    return cosine_similarity(history_vector, response_vector)[0][0]
+
+def calculate_adaptation_score(previous_metrics: dict, current_metrics: dict, context: Dict[str, Any]) -> float:
     if not previous_metrics:
         return 0.0
     
-    changes = [abs(current_metrics.get(k, 0) - previous_metrics.get(k, 0)) for k in current_metrics.keys()]
-    return np.mean(changes)
+    metric_changes = [abs(float(current_metrics.get(k, 0)) - float(previous_metrics.get(k, 0))) for k in current_metrics.keys()]
+    metric_adaptation = np.mean(metric_changes)
+    
+    stage_adaptation = 1.0 if context.get('current_stage') != context.get('previous_stage') else 0.0
+    
+    return 0.7 * metric_adaptation + 0.3 * stage_adaptation
 
-def calculate_inference_score(generated_response: str, expected_response: str) -> float:
+def calculate_inference_score(generated_response: str, expected_response: str, context: Dict[str, Any]) -> float:
     generated_sentences = sent_tokenize(generated_response)
     expected_sentences = sent_tokenize(expected_response)
     
@@ -41,9 +65,16 @@ def calculate_inference_score(generated_response: str, expected_response: str) -
                         set(topic for topics in expected_topics for topic in topics))
     total_topics = len(set(topic for topics in generated_topics + expected_topics for topic in topics))
     
-    return topic_overlap / total_topics if total_topics > 0 else 0
+    inference_quality = _evaluate_inference_quality(generated_response, context)
+    
+    return 0.6 * (topic_overlap / total_topics if total_topics > 0 else 0) + 0.4 * inference_quality
 
-def calculate_steerability_score(generated_response: str, user_input: str, expected_response: str) -> float:
+def _evaluate_inference_quality(generated_response: str, context: Dict[str, Any]) -> float:
+    # Implement logic to evaluate the quality and relevance of inferences
+    # This is a placeholder implementation
+    return 0.5
+
+def calculate_steerability_score(generated_response: str, user_input: str, expected_response: str, context: Dict[str, Any]) -> float:
     user_blob = TextBlob(user_input)
     generated_blob = TextBlob(generated_response)
     expected_blob = TextBlob(expected_response)
@@ -55,31 +86,32 @@ def calculate_steerability_score(generated_response: str, user_input: str, expec
     generated_alignment = len(user_topics & generated_topics) / len(user_topics) if user_topics else 0
     expected_alignment = len(user_topics & expected_topics) / len(user_topics) if user_topics else 0
     
-    return 1 - abs(generated_alignment - expected_alignment)
-
-def calculate_satisfaction_score(generated_responses: List[str], expected_responses: List[str]) -> float:
-    generated_sentiments = [TextBlob(resp).sentiment.polarity for resp in generated_responses]
-    expected_sentiments = [TextBlob(resp).sentiment.polarity for resp in expected_responses]
+    topic_steerability = 1 - abs(generated_alignment - expected_alignment)
     
-    sentiment_diff = np.mean([abs(g - e) for g, e in zip(generated_sentiments, expected_sentiments)])
-    return 1 - sentiment_diff
-
-def calculate_coherence_score(response: str) -> float:
-    sentences = sent_tokenize(response)
-    if len(sentences) < 2:
-        return 1.0
+    conversation_flow = _evaluate_conversation_flow(generated_response, context)
     
-    coherence_scores = []
-    for i in range(len(sentences) - 1):
-        similarity = cosine_similarity(
-            [TextBlob(sentences[i]).words],
-            [TextBlob(sentences[i+1]).words]
-        )[0][0]
-        coherence_scores.append(similarity)
-    
-    return np.mean(coherence_scores)
+    return 0.6 * topic_steerability + 0.4 * conversation_flow
 
-def calculate_information_density_score(response: str) -> float:
-    words = TextBlob(response).words
-    unique_words = set(words)
-    return len(unique_words) / len(words) if words else 0
+def _evaluate_conversation_flow(generated_response: str, context: Dict[str, Any]) -> float:
+    # Implement logic to evaluate how well the model guides the conversation
+    # This is a placeholder implementation
+    return 0.5
+
+def calculate_knowledge_integration_score(generated_response: str, context: Dict[str, Any]) -> float:
+    integrated_knowledge = context.get('integrated_knowledge', '')
+    vectorizer = CountVectorizer().fit([integrated_knowledge, generated_response])
+    knowledge_vector = vectorizer.transform([integrated_knowledge])
+    response_vector = vectorizer.transform([generated_response])
+    
+    similarity = cosine_similarity(knowledge_vector, response_vector)[0][0]
+    
+    relevance = _evaluate_knowledge_relevance(generated_response, context)
+    
+    return 0.7 * similarity + 0.3 * relevance
+
+def _evaluate_knowledge_relevance(generated_response: str, context: Dict[str, Any]) -> float:
+    # Implement logic to evaluate the relevance of integrated knowledge
+    # This is a placeholder implementation
+    return 0.5
+
+# Update the EvaluationFramework to use these new metrics
