@@ -96,22 +96,3 @@ def _evaluate_conversation_flow(generated_response: str, context: Dict[str, Any]
     # Implement logic to evaluate how well the model guides the conversation
     # This is a placeholder implementation
     return 0.5
-
-def calculate_knowledge_integration_score(generated_response: str, context: Dict[str, Any]) -> float:
-    integrated_knowledge = context.get('integrated_knowledge', '')
-    vectorizer = CountVectorizer().fit([integrated_knowledge, generated_response])
-    knowledge_vector = vectorizer.transform([integrated_knowledge])
-    response_vector = vectorizer.transform([generated_response])
-    
-    similarity = cosine_similarity(knowledge_vector, response_vector)[0][0]
-    
-    relevance = _evaluate_knowledge_relevance(generated_response, context)
-    
-    return 0.7 * similarity + 0.3 * relevance
-
-def _evaluate_knowledge_relevance(generated_response: str, context: Dict[str, Any]) -> float:
-    # Implement logic to evaluate the relevance of integrated knowledge
-    # This is a placeholder implementation
-    return 0.5
-
-# Update the EvaluationFramework to use these new metrics

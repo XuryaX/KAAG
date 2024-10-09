@@ -22,6 +22,9 @@ class DynamicBayesianNetwork:
                 self._update_transition_matrix(self.current_stage, new_stage)
                 self.current_stage = new_stage
 
+    def get_current_stage(self):
+        return self.current_stage
+
     def _calculate_transition_probability(self, new_stage):
         current_index = self.stage_manager.stages.index(self.current_stage)
         new_index = self.stage_manager.stages.index(new_stage)

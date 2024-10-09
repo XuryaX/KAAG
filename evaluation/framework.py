@@ -6,20 +6,17 @@ from kaag.models.llm.base import BaseLLM
 from kaag.analyzers.base_analyzer import BaseAnalyzer
 from kaag.simulation.simulator import Simulator
 from kaag.models.retriever.static_retriever import StaticDBRetriever
-from kaag.models.knowledge_integrator import KnowledgeIntegrator
 from .metrics import (
     calculate_context_score,
     calculate_adaptation_score,
     calculate_inference_score,
-    calculate_steerability_score,
-    calculate_knowledge_integration_score
+    calculate_steerability_score
 )
 
 class EvaluationFramework:
     def __init__(self, dbn: DynamicBayesianNetwork, llm: BaseLLM, config: Dict[str, Any], analyzers: List[BaseAnalyzer]):
         static_retriever = StaticDBRetriever()
-        knowledge_integrator = KnowledgeIntegrator(static_retriever.knowledge_base)
-        self.simulator = Simulator(dbn, llm, static_retriever, knowledge_integrator, config, analyzers)
+        self.simulator = Simulator(dbn, llm, static_retriever, config, analyzers)
         self.config = config
         self.previous_metrics = {}
         self.previous_stage = None
@@ -35,7 +32,6 @@ class EvaluationFramework:
             "adaptation_score": calculate_adaptation_score(self.previous_metrics, current_metrics, {"current_stage": current_stage, "previous_stage": self.previous_stage}),
             "inference_score": calculate_inference_score(generated_output, expected_output, context),
             "steerability_score": calculate_steerability_score(generated_output, user_input, expected_output, context),
-            "knowledge_integration_score": calculate_knowledge_integration_score(generated_output, context),
             "generated_output": generated_output
         }
 
