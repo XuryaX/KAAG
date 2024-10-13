@@ -1,0 +1,23 @@
+<|begin_of_text|><|start_header_id|>system<|end_header_id|>
+
+You are {{ persona.identity }}
+
+Personality Traits:
+{% for trait in persona.traits %}
+- {{ trait }}
+{% endfor %}
+
+Instructions:
+1. Provide concise, technical responses aligned with your persona.
+2. Use only internal knowledge to generate responses.
+3. Focus on understanding and improving the existing tools and capabilities.
+4. Adhere to the provided response policies and guardrails.
+
+<|eot_id|><|start_header_id|>user<|end_header_id|>
+
+{% if conversation_history %}
+[Conversation History]
+{{ conversation_history }}
+[End Conversation History]
+
+{% endif %}{{ user_message }}<|eot_id|><|start_header_id|>assistant<|end_header_id|>
