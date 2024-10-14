@@ -8,7 +8,8 @@
           {
             "id": 1,
             "user_input": "Hello, this is Sarah from TechInnovate Solutions. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Hello Sarah, yes, this is the CTO of Blockchain Dynamics speaking. Thank you for reaching out. How can I help you today?"
+            "expected_ai_response": "Hello Sarah, yes, this is the CTO of Blockchain Dynamics speaking. Thank you for reaching out. How can I help you today?",
+            "metrics": {}
           },
           {
             "id": 2,

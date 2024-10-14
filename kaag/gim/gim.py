@@ -1,50 +1,34 @@
-from typing import Dict, Any, List
-import networkx as nx
+from typing import Dict, Any
+import math
+import random
 
 class GamifiedInteractionModel:
-    def __init__(self, dbn: nx.DiGraph):
+    def __init__(self, dbn: 'DynamicBayesianNetwork'):
         self.dbn = dbn
 
-    def calculate_utility(self, node: str, interaction_state: Dict[str, Any]) -> float:
-        """
-        Calculate the utility of a node based on the current interaction state.
-        """
-        node_data = self.dbn.nodes[node]
-        conditions = node_data.get('conditions', {})
-        utility = 0
-
-        for metric, (min_value, max_value) in conditions.items():
-            if metric in interaction_state:
-                value = interaction_state[metric]
-                if min_value <= value <= max_value:
-                    utility += 1  # Simple scoring, can be made more sophisticated
-
-        return utility
-
     def select_next_node(self, current_node: str, interaction_state: Dict[str, Any]) -> str:
-        """
-        Select the next node to transition to based on utility calculations.
-        """
-        neighbors = list(self.dbn.successors(current_node))
-        utilities = [self.calculate_utility(node, interaction_state) for node in neighbors]
+        if self.dbn.is_leaf_node(current_node):
+            return current_node
 
-        if not utilities:
-            return current_node  # Stay in the current node if no valid transitions
+        possible_transitions = self.dbn.get_possible_transitions(current_node, interaction_state)
+        if not possible_transitions:
+            return current_node
 
-        max_utility = max(utilities)
-        best_nodes = [node for node, utility in zip(neighbors, utilities) if utility == max_utility]
+        utilities = [
+            self.dbn.get_utility(current_node, next_node, interaction_state)
+            for next_node in possible_transitions
+        ]
 
-        # If multiple nodes have the same utility, you can implement a tie-breaking mechanism here
-        return best_nodes[0]
+        # Softmax selection with temperature
+        temperature = 0.5  # Adjust this value to control randomness
+        exp_utilities = [math.exp(u / temperature) for u in utilities]
+        total = sum(exp_utilities)
+        probabilities = [eu / total for eu in exp_utilities]
 
-    def update_interaction_state(self, current_state: Dict[str, Any], analyzers: List[Any]) -> Dict[str, Any]:
-        """
-        Update the interaction state based on the current state and analyzer outputs.
-        """
-        new_state = current_state.copy()
+        selected_node = random.choices(possible_transitions, weights=probabilities, k=1)[0]
 
-        for analyzer in analyzers:
-            metric, value = analyzer.analyze(current_state)
-            new_state[metric] = value
+        # Add some randomness to occasionally explore non-optimal paths
+        if random.random() < 0.1:  # 10% chance to explore
+            return random.choice(possible_transitions)
 
-        return new_state
+        return selected_node

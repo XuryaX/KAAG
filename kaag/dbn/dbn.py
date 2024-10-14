@@ -5,26 +5,20 @@ class DynamicBayesianNetwork:
     def __init__(self):
         self.graph = nx.DiGraph()
 
-    def add_node(self, node_name: str, initial_state: Any = None, conditions: Dict[str, tuple] = None):
-        self.graph.add_node(node_name, state=initial_state, conditions=conditions or {})
+    def add_node(self, node_name: str, is_leaf: bool = False):
+        self.graph.add_node(node_name, is_leaf=is_leaf)
 
-    def add_edge(self, parent: str, child: str, condition: Callable[[Dict[str, Any]], bool]):
-        self.graph.add_edge(parent, child, condition=condition)
+    def add_edge(self, parent: str, child: str, condition: Callable[[Dict[str, Any]], bool], utility: Callable[[Dict[str, Any]], float]):
+        self.graph.add_edge(parent, child, condition=condition, utility=utility)
 
-    def update_interaction_state(self, current_state: Dict[str, Any], analyzers: List[Any]) -> Dict[str, Any]:
-        """
-        The function updates the interaction state based on the current state and analyzer outputs.
-        """
-        new_state = current_state.copy()
+    def get_possible_transitions(self, current_node: str, interaction_state: Dict[str, Any]) -> List[str]:
+        return [
+            child for child in self.graph.successors(current_node)
+            if self.graph[current_node][child]['condition'](interaction_state)
+        ]
 
-        for analyzer in analyzers:
-            metric, value = analyzer.analyze(current_state)
-            new_state[metric] = value
+    def get_utility(self, parent: str, child: str, interaction_state: Dict[str, Any]) -> float:
+        return self.graph[parent][child]['utility'](interaction_state)
 
-        return new_state
-
-    def update_node_state(self, node: str, new_state: Any):
-        self.graph.nodes[node]['state'] = new_state
-
-    def get_node_state(self, node: str) -> Any:
-        return self.graph.nodes[node].get('state')
+    def is_leaf_node(self, node: str) -> bool:
+        return self.graph.nodes[node].get('is_leaf', False)
