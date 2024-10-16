@@ -6,9 +6,14 @@ class StaticAnalyzer(BaseAnalyzer):
         self.scenario_data = None
 
     def analyze(self, current_state: Dict[str, Any]) -> Dict[str, Any]:
-        if not self.scenario_data:
+        if self.scenario_data is None:
             raise Exception("Scenario data not set")
         
+        scenario_data = self.scenario_data
+        self.scenario_data = None #To ensure that the scenario data is updated in every turn.
+        
+        return scenario_data
+        
     
-    def update_properties(self, properties: Any) -> Dict[str, Any]:
-        return super().update_properties(properties)
+    def update_properties(self, properties: Any) -> None:
+        self.scenario_data = properties

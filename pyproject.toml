@@ -2,5 +2,32 @@
 requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
+[project]
+name = "kaag"
+version = "0.1.0"
+description = "Knowledge and Aptitude Augmented Generation framework"
+authors = [{name = "Shaurya Chaudhuri", email = "shaurya@aroundai.co"}]
+license = {file = "LICENSE"}
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+]
+
+[project.urls]
+Homepage = "https://github.com/aroundAI/kaag"
+
+[project.optional-dependencies]
+dev = ["pytest", "black", "flake8"]
+
+[project.scripts]
+kaag-evaluate = "scripts.evaluation:main"
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]

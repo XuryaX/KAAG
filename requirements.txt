@@ -1,1 +1,9 @@
 networkx>=2.5
+jinja2
+pyyaml
+requests
+numpy
+scikit-learn
+spacy
+textblob
+sentence-transformers

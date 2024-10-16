@@ -1,11 +1,12 @@
 import json
 import os
 import csv
+import argparse
 from typing import Dict, Any, List, NamedTuple
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sentence_transformers import SentenceTransformer
 
 from kaag.core.kaag import KAAG
 from kaag.core.rag import RAG
@@ -21,37 +22,17 @@ class Turn(NamedTuple):
     metrics: Dict[str, float]
 
 class Metric:
-    def __init__(self, name: str, threshold: float):
+    def __init__(self, name: str = 'Controlled Steerability'):
         self.name = name
-        self.threshold = threshold
+        # Initialize the pre-trained sentence transformer model
+        self.model = SentenceTransformer('all-MiniLM-L6-v2')
 
     def calculate(self, generated_output: str, expected_output: str) -> float:
-        vectorizer = TfidfVectorizer()
-        vectors = vectorizer.fit_transform([generated_output, expected_output])
-        return cosine_similarity(vectors[0], vectors[1])[0][0]
-
-class ControlledSteerabilityMetric(Metric):
-    def __init__(self, threshold=0.7):
-        super().__init__("Controlled Steerability", threshold)
-
-class ConvergenceRateMetric(Metric):
-    def __init__(self, threshold=0.7, convergence_threshold=0.9):
-        super().__init__("Convergence Rate", threshold)
-        self.convergence_threshold = convergence_threshold
-        self.cumulative_generated = ""
-        self.cumulative_expected = ""
-        self.converged_turn = None
-
-    def calculate(self, generated_output: str, expected_output: str) -> float:
-        self.cumulative_generated += " " + generated_output
-        self.cumulative_expected += " " + expected_output
-        
-        similarity = super().calculate(self.cumulative_generated, self.cumulative_expected)
-        
-        if similarity >= self.convergence_threshold and self.converged_turn is None:
-            self.converged_turn = len(self.cumulative_generated.split())
-        
-        return 1 / self.converged_turn if self.converged_turn else 0.0
+        # Encode the generated and expected outputs into embeddings
+        embeddings = self.model.encode([generated_output, expected_output])
+        # Compute cosine similarity between the two embeddings
+        similarity = cosine_similarity([embeddings[0]], [embeddings[1]])[0][0]
+        return similarity
 
 def load_test_cases(file_path: str) -> Dict[str, Any]:
     print(f"Loading test cases from {file_path}...")
@@ -67,7 +48,7 @@ def process_turn(agent, user_input: str, expected_output: str, metrics: List[Met
 def run_scenario(kaag: KAAG, rag: RAG, norag: NoRAG, scenario: Dict[str, Any]) -> List[Dict[str, Any]]:
     print(f"Running scenario: {scenario['name']}")
     results = []
-    metrics = [ControlledSteerabilityMetric(), ConvergenceRateMetric()]
+    metrics = [Metric()]
     static_analyzer = kaag.get_analyzers()[0]
     
     with ThreadPoolExecutor(max_workers=3) as executor:
@@ -131,7 +112,7 @@ def save_results(scenario_name: str, results: List[Dict[str, Any]], output_dir: 
     csv_exists = os.path.exists(csv_file)
 
     with open(csv_file, 'a', newline='') as csvfile:
-        fieldnames = ['Scenario Name', 'Turn', 'User Input', 'Expected Output', 'Agent', 'Generated Output', 'Controlled Steerability', 'Convergence Rate', 'KAAG Current Node', 'KAAG Metrics']
+        fieldnames = ['Scenario Name', 'Turn', 'User Input', 'Expected Output', 'Agent', 'Generated Output', 'Controlled Steerability', 'KAAG Current Node', 'KAAG Metrics']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         
         if not csv_exists:
@@ -147,7 +128,6 @@ def save_results(scenario_name: str, results: List[Dict[str, Any]], output_dir: 
                     'Agent': agent,
                     'Generated Output': response_data.generated_output,
                     'Controlled Steerability': response_data.metrics['Controlled Steerability'],
-                    'Convergence Rate': response_data.metrics['Convergence Rate'],
                     'KAAG Current Node': '',
                     'KAAG Metrics': ''
                 }
@@ -156,21 +136,7 @@ def save_results(scenario_name: str, results: List[Dict[str, Any]], output_dir: 
                     row['KAAG Metrics'] = json.dumps(turn['kaag_state']['interaction_state'], indent=2, default=default)
                 writer.writerow(row)
 
-def calculate_total_averages(csv_file: str):
-    import pandas as pd
-    
-    df = pd.read_csv(csv_file)
-    total_avg_scores = df.groupby('Agent')[['Controlled Steerability', 'Convergence Rate']].mean()
-    
-    with open(csv_file, 'a', newline='') as csvfile:
-        writer = csv.writer(csvfile)
-        writer.writerow([])
-        writer.writerow(['Total Averages'])
-        writer.writerow(['Agent', 'Controlled Steerability', 'Convergence Rate'])
-        for agent, row in total_avg_scores.iterrows():
-            writer.writerow([agent, row['Controlled Steerability'], row['Convergence Rate']])
-
-def main():
+def main(num_runs):
     print("Starting main execution...")
     
     script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -200,22 +166,34 @@ def main():
     print("Initializing knowledge retriever...")
     knowledge_retriever = TextFileKnowledgeRetriever(knowledge_path, top_k=config['knowledge_retriever']['top_k'])
 
-    print("Initializing KAAG, RAG, and NoRAG...")
-    kaag = KAAG(llm, config, kaag_template)
-    rag = RAG(llm, config, knowledge_retriever, rag_template)
-    norag = NoRAG(llm, config, norag_template)
+    print(f"Starting {num_runs} evaluation runs...")
+    main_output_dir = 'results'
+    os.makedirs(main_output_dir, exist_ok=True)
 
-    print("Starting scenario evaluations...")
-    output_dir = 'evaluation_results'
-    csv_file = os.path.join(output_dir, 'evaluation_metrics.csv')
-    
-    for scenario in test_cases['test_scenarios']:
-        print(f"Evaluating scenario: {scenario['name']}")
-        results = run_scenario(kaag, rag, norag, scenario)
-        save_results(scenario['name'], results, output_dir, csv_file)
+    for run in range(1, num_runs + 1):
+        run_dir = os.path.join(main_output_dir, f'r{run}')
+        os.makedirs(run_dir, exist_ok=True)
+        csv_file = os.path.join(run_dir, 'evaluation_metrics.csv')
 
-    calculate_total_averages(csv_file)
-    print("Evaluation complete. Results saved to:", output_dir)
+        print(f"\nStarting run {run}/{num_runs}")
+        print("Starting scenario evaluations...")
+        
+        for scenario in test_cases['test_scenarios']:
+            print("Initializing KAAG, RAG, and NoRAG...")
+            kaag = KAAG(llm, config, kaag_template)
+            rag = RAG(llm, config, knowledge_retriever, rag_template)
+            norag = NoRAG(llm, config, norag_template)
+            print(f"Evaluating scenario: {scenario['name']}")
+            results = run_scenario(kaag, rag, norag, scenario)
+            save_results(scenario['name'], results, run_dir, csv_file)
+
+        print(f"Run {run}/{num_runs} complete. Results saved to: {run_dir}")
+
+    print(f"All {num_runs} evaluation runs complete. Results saved in: {main_output_dir}")
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser(description="Run multiple evaluations")
+    parser.add_argument("num_runs", type=int, help="Number of evaluation runs to perform")
+    args = parser.parse_args()
+    
+    main(args.num_runs)

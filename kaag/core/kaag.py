@@ -87,13 +87,20 @@ class KAAG:
         self.logger.info(f"Current State: {self.get_current_state()}")
 
         if self.dbn.is_leaf_node(self.current_node):
-            return self._handle_leaf_node()
+            return self._handle_leaf_node(user_input)
 
         next_node = self.gim.select_next_node(self.current_node, self.interaction_state)
         self.logger.info(f"Transition: {self.current_node} -> {next_node}")
         self.current_node = next_node
 
         stage_instructions = next((stage['instructions'] for stage in self.config['stages'] if stage['id'] == self.current_node), '')
+        stage_examples = next((stage['examples'] for stage in self.config['stages'] if stage['id'] == self.current_node), '')
+
+        formatted_examples = [
+            {"user": example['user'], "assistant": example['AI']}
+            for example in stage_examples
+        ]
+
         prompt = self.template.render(
             persona=self.config['persona'],
             knowledge={'state': 'Current knowledge state'},
@@ -102,15 +109,21 @@ class KAAG:
                 'stage_specific_instructions': stage_instructions
             },
             conversation_history=self._format_conversation_history(),
-            user_message=user_input
+            user_message=user_input,
+            examples=formatted_examples
         )
         response = self.llm.generate(prompt)
 
         self.conversation_history.append({"user": user_input, "assistant": response})
         return response
 
-    def _handle_leaf_node(self) -> str:
+    def _handle_leaf_node(self, user_input) -> str:
         leaf_instructions = next((stage['instructions'] for stage in self.config['stages'] if stage['id'] == self.current_node), '')
+        stage_examples = next((stage['examples'] for stage in self.config['stages'] if stage['id'] == self.current_node), '')
+        formatted_examples = [
+            {"user": example['user'], "assistant": example['AI']}
+            for example in stage_examples
+        ]
         prompt = self.template.render(
             persona=self.config['persona'],
             knowledge={'state': 'Current knowledge state'},
@@ -119,7 +132,8 @@ class KAAG:
                 'stage_specific_instructions': leaf_instructions
             },
             conversation_history=self._format_conversation_history(),
-            user_message="[LEAF_NODE]End Conversation[LEAF_NODE]"
+            user_message=user_input,
+            examples=formatted_examples
         )
         response = self.llm.generate(prompt)
         self.logger.info(f"Reached leaf node: {self.current_node}. Conversation ended.")
@@ -128,7 +142,7 @@ class KAAG:
     def _format_conversation_history(self) -> str:
         formatted_history = ""
         for turn in self.conversation_history[-5:]:  # Only use the last 5 turns
-            formatted_history += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n\n"
+            formatted_history += f"User: {turn['user']}\nAssistant: {turn['assistant']}\n"
         return formatted_history
 
     def get_current_state(self) -> Dict[str, Any]:

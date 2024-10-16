@@ -14,6 +14,7 @@ setup(
         "scikit-learn",
         "spacy",
         "textblob",
+        "sentence-transformers",
     ],
     extras_require={
         "dev": ["pytest", "black", "flake8"],

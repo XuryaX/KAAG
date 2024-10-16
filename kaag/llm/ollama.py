@@ -8,6 +8,7 @@ class OllamaLLM(LLMInterface):
         self.api_url = api_url
 
     def generate(self, prompt: str, **kwargs) -> str:
+        print(prompt)
         response = requests.post(
             f"{self.api_url}/api/generate",
             json={

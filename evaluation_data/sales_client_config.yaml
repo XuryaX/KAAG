@@ -29,6 +29,10 @@ metrics:
     initial: 60
   language_comfort:
     initial: 80
+  professionalism_perception:
+    initial: 50
+  politeness_perception:
+    initial: 50
 
 analyzers:
   - name: "StaticAnalyzer"
@@ -39,146 +43,263 @@ stages:
     instructions: |
       You are cautious but polite. Express mild interest in learning more.
       Ask for a brief overview of the offering, focusing on how it relates to your fintech startup's needs.
+      Your response should reflect your perception of the salesperson's professionalism and politeness.
+    examples:
+      - user: "Good afternoon, Ms. Adams. I'm Alex Johnson from FinEdge Solutions. I'd like to discuss how our payment technology can benefit your company. Do you have a few minutes?"
+        AI: "Good afternoon, Alex. Thank you for reaching out. Could you provide a brief overview of how your solution might enhance our payment infrastructure?"
+      - user: "Hello Rachel, this is Samantha from CryptoFlow Tech. We have some innovative solutions that could interest you. Is this a good time to talk?"
+        AI: "Hello Samantha. I'm interested to learn more. How does your offering align with the needs of a fintech startup like ours?"
+      - user: "Ms. Adams, I'm Michael from BlockPay Innovations. We specialize in scalable payment solutions. May I have a moment of your time?"
+        AI: "Hello Michael. Could you please give me a summary of your services, particularly in terms of scalability and cost-effectiveness?"
+      - user: "Hi Rachel, this is Laura from Lightning Transactions Inc. We have a platform that could improve your payment systems. Do you have time for a quick chat?"
+        AI: "Hi Laura. I appreciate you reaching out. Can you explain how your solution could enhance our current payment systems?"
+      - user: "Good morning, Ms. Adams. Daniel here from SecurePay Technologies. I'd like to share how our services can address your payment challenges. Is now a good time?"
+        AI: "Good morning, Daniel. I'm curious about your product. How might it address the challenges we're facing in payment scalability?"
+
     transitions:
       - to: needs_assessment
         conditions:
           interest: [30, 100]
           trust: [30, 100]
-        utility: 
-          function: "lambda state: state['interest'] * 0.6 + state['trust'] * 0.4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['interest'] * 0.4 + state['trust'] * 0.3 + state['politeness_perception'] * 0.15 + state['professionalism_perception'] * 0.15"
       - to: disengagement
         conditions:
           interest: [0, 30]
           trust: [0, 30]
-        utility: 
-          function: "lambda state: (30 - state['interest']) * 0.5 + (30 - state['trust']) * 0.5"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (30 - state['interest']) * 0.3 + (30 - state['trust']) * 0.3 + (50 - state['politeness_perception']) * 0.2 + (50 - state['professionalism_perception']) * 0.2"
 
   - id: needs_assessment
     instructions: |
       Share specific challenges your fintech startup is facing with payment infrastructure, focusing on scalability and transaction costs.
-      Ask targeted questions about how the Learning & Development services address these problems, particularly in relation to the Lightning Network and blockchain technology.
+      Ask targeted questions about how the services address these problems, particularly in relation to the Lightning Network and blockchain technology.
+    examples:
+      - user: "We offer a payment platform that easily scales with your business growth. Can you tell me about the scalability challenges you're facing?"
+        AI: "Certainly. We're experiencing rapid growth and need to handle increasing transaction volumes without compromising speed. How does your solution assist with scalability?"
+      - user: "Our technology reduces transaction fees significantly. Is cost reduction a priority for your company?"
+        AI: "Yes, high transaction fees are a concern for us. Can you explain how your service reduces costs, perhaps by utilizing the Lightning Network?"
+      - user: "We specialize in efficient microtransaction processing. Do you require support in handling microtransactions?"
+        AI: "Indeed, our payment infrastructure needs to process microtransactions efficiently. How does your technology support this capability?"
+      - user: "Our blockchain solutions integrate seamlessly with existing systems. Are you interested in enhancing your infrastructure with blockchain technology?"
+        AI: "Yes, we're interested in blockchain solutions. Can you explain how your blockchain integration improves scalability with our current systems?"
+      - user: "Leveraging the Lightning Network, we speed up transaction times. Is improving transaction speed something you're looking into?"
+        AI: "We're definitely looking into faster settlements. How does your offering leverage the Lightning Network to achieve this?"
+
     transitions:
       - to: solution_presentation
         conditions:
           interest: [50, 100]
           comprehension: [40, 100]
-        utility: 
-          function: "lambda state: state['interest'] * 0.4 + state['comprehension'] * 0.6"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['interest'] * 0.3 + state['comprehension'] * 0.3 + state['politeness_perception'] * 0.2 + state['professionalism_perception'] * 0.2"
       - to: disengagement
         conditions:
           interest: [0, 50]
           frustration: [70, 100]
-        utility: 
-          function: "lambda state: (50 - state['interest']) * 0.3 + state['frustration'] * 0.7"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (50 - state['interest']) * 0.2 + state['frustration'] * 0.4 + (50 - state['politeness_perception']) * 0.2 + (50 - state['professionalism_perception']) * 0.2"
 
   - id: solution_presentation
     instructions: |
       Listen attentively to the presentation, focusing on technical details related to the Lightning Network and scalability solutions.
       Ask for clarification on points you don't fully understand, particularly around implementation and integration with existing systems.
       Express enthusiasm for features that directly address your startup's payment infrastructure challenges.
+    examples:
+      - user: "Our solution leverages the Lightning Network to increase transaction speeds dramatically. Do you have any questions about this feature?"
+        AI: "Could you elaborate on how the Lightning Network enhances transaction speeds in your solution? Also, how would this integrate with our current payment systems?"
+      - user: "We ensure seamless integration with your existing infrastructure. Does that alleviate any concerns you might have?"
+        AI: "That sounds promising. Can you explain the implementation process and any potential downtime during integration?"
+      - user: "Security is a top priority for us, and we employ advanced encryption methods. Is this in line with your security expectations?"
+        AI: "Security is crucial for us. How do you ensure transaction security while using blockchain technology?"
+      - user: "Our platform is designed to handle a high volume of transactions without any lag. Is scalability a key factor for you?"
+        AI: "Yes, scalability is essential. How does your technology maintain performance under heavy transaction loads?"
+      - user: "We offer significant reductions in transaction costs. Would you like more details on the cost savings?"
+        AI: "Absolutely. I'm interested in how these cost reductions are achieved and what impact they might have on our operations."
+
     transitions:
       - to: technical_deep_dive
         conditions:
           interest: [70, 100]
           comprehension: [60, 100]
           technical_fit: [60, 100]
-        utility: 
-          function: "lambda state: state['interest'] * 0.3 + state['comprehension'] * 0.3 + state['technical_fit'] * 0.4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['interest'] * 0.25 + state['comprehension'] * 0.25 + state['technical_fit'] * 0.25 + (state['politeness_perception'] + state['professionalism_perception']) * 0.125"
       - to: budget_discussion
         conditions:
           budget_alignment: [0, 60]
           interest: [50, 100]
-        utility: 
-          function: "lambda state: (60 - state['budget_alignment']) * 0.6 + state['interest'] * 0.4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: (60 - state['budget_alignment']) * 0.4 + state['interest'] * 0.3 + (state['politeness_perception'] + state['professionalism_perception']) * 0.15"
       - to: disengagement
         conditions:
           interest: [0, 50]
           technical_fit: [0, 50]
-        utility: 
-          function: "lambda state: (50 - state['interest']) * 0.5 + (50 - state['technical_fit']) * 0.5"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (50 - state['interest']) * 0.25 + (50 - state['technical_fit']) * 0.25 + (50 - state['politeness_perception'] + 50 - state['professionalism_perception']) * 0.25"
 
   - id: technical_deep_dive
     instructions: |
       Engage in a detailed technical discussion about the proposed solution.
       Ask specific questions about the architecture, scalability, and security measures.
       Express concerns about potential integration challenges with your existing systems.
+    examples:
+      - user: "Our architecture is built on microservices, allowing for easy scaling. Do you have any technical questions?"
+        AI: "Yes, can you walk me through how your microservices architecture handles scaling during peak transaction periods?"
+      - user: "We use advanced encryption standards to secure all transactions. Does that meet your security requirements?"
+        AI: "It's good to hear that. What specific encryption protocols are you using, and how do they integrate with our security systems?"
+      - user: "Integration with legacy systems is seamless due to our API-first approach. Does that address any integration concerns?"
+        AI: "Partially. How does your API handle compatibility with our existing systems, and what support do you offer during the integration?"
+      - user: "Our solution can handle exponential growth without performance loss. Is this level of scalability what you're looking for?"
+        AI: "Yes, scalability is vital. Could you provide performance benchmarks or case studies demonstrating this?"
+      - user: "We have technical documentation available. Would you like me to send it over?"
+        AI: "That would be helpful. Our team can review it to better understand how your solution fits with our infrastructure."
+
     transitions:
       - to: compliance_discussion
         conditions:
           compliance_confidence: [0, 70]
           technical_fit: [70, 100]
-        utility: 
-          function: "lambda state: (70 - state['compliance_confidence']) * 0.7 + state['technical_fit'] * 0.3"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: (70 - state['compliance_confidence']) * 0.4 + state['technical_fit'] * 0.3 + (state['politeness_perception'] + state['professionalism_perception']) * 0.15"
       - to: budget_discussion
         conditions:
           budget_alignment: [0, 70]
           technical_fit: [70, 100]
-        utility: 
-          function: "lambda state: (70 - state['budget_alignment']) * 0.6 + state['technical_fit'] * 0.4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: (70 - state['budget_alignment']) * 0.4 + state['technical_fit'] * 0.3 + (state['politeness_perception'] + state['professionalism_perception']) * 0.15"
       - to: disengagement
         conditions:
           technical_fit: [0, 50]
           frustration: [70, 100]
-        utility: 
-          function: "lambda state: (50 - state['technical_fit']) * 0.4 + state['frustration'] * 0.6"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (50 - state['technical_fit']) * 0.3 + state['frustration'] * 0.4 + (50 - state['politeness_perception'] + 50 - state['professionalism_perception']) * 0.15"
 
   - id: budget_discussion
     instructions: |
       Discuss the financial aspects of the proposed solution in detail.
       Ask for a breakdown of costs, including implementation, training, and ongoing support.
       Express concerns about ROI and request case studies or projections to justify the investment.
+    examples:
+      - user: "Our pricing is flexible to suit different needs. Do you have a budget in mind?"
+        AI: "We're aiming to keep costs manageable. Could you provide a detailed breakdown of the expenses involved, including any ongoing fees?"
+      - user: "We offer a subscription model with optional add-ons. Does that work for your financial planning?"
+        AI: "Possibly. What's the expected ROI, and do you have any case studies demonstrating the financial benefits?"
+      - user: "Training and support are included in our package. Is that something you're interested in?"
+        AI: "Yes, but are there any additional costs for customization or integration with our existing systems?"
+      - user: "We can provide projections on how our solution can save you money in the long run. Would that help?"
+        AI: "That would be helpful. Can you share these projections and explain how they were calculated?"
+      - user: "Our implementation costs are competitive. How does this align with your budget expectations?"
+        AI: "We're working with a tight budget. Are there any discounts or flexible payment options available?"
+
     transitions:
       - to: compliance_discussion
         conditions:
           budget_alignment: [70, 100]
           compliance_confidence: [0, 70]
-        utility: 
-          function: "lambda state: state['budget_alignment'] * 0.4 + (70 - state['compliance_confidence']) * 0.6"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['budget_alignment'] * 0.3 + (70 - state['compliance_confidence']) * 0.3 + (state['politeness_perception'] + state['professionalism_perception']) * 0.2"
       - to: closing
         conditions:
           budget_alignment: [80, 100]
           technical_fit: [80, 100]
           compliance_confidence: [80, 100]
-        utility: 
-          function: "lambda state: state['budget_alignment'] * 0.3 + state['technical_fit'] * 0.3 + state['compliance_confidence'] * 0.4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['budget_alignment'] * 0.25 + state['technical_fit'] * 0.25 + state['compliance_confidence'] * 0.25 + (state['politeness_perception'] + state['professionalism_perception']) * 0.125"
       - to: disengagement
         conditions:
           budget_alignment: [0, 50]
           frustration: [70, 100]
-        utility: 
-          function: "lambda state: (50 - state['budget_alignment']) * 0.6 + state['frustration'] * 0.4"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (50 - state['budget_alignment']) * 0.3 + state['frustration'] * 0.3 + (50 - state['politeness_perception'] + 50 - state['professionalism_perception']) * 0.2"
 
   - id: compliance_discussion
     instructions: |
       Express concerns about regulatory compliance in different jurisdictions.
-      Ask for details on how the training addresses current and upcoming regulatory changes.
+      Ask for details on how the solution addresses current and upcoming regulatory changes.
       Inquire about customization options for region-specific compliance requirements.
+    examples:
+      - user: "We stay ahead of regulatory changes globally. Do you have specific compliance concerns?"
+        AI: "Yes, compliance with international payment regulations is crucial for us. How does your solution handle this?"
+      - user: "Our platform is customizable to meet regional laws. Is that flexibility important to you?"
+        AI: "Absolutely. We're expanding into new markets and need to adapt to different regional compliance requirements. Can your system accommodate this?"
+      - user: "We provide regular updates to keep you compliant. Does that address your concerns?"
+        AI: "It's a good start. What measures are in place to ensure ongoing compliance with evolving regulations?"
+      - user: "Our compliance team can assist with specific needs. Would you like to discuss customization?"
+        AI: "Yes, can you customize the platform to meet specific regulatory standards we need to adhere to?"
+      - user: "We use automated tools to implement regulatory changes quickly. Is speed in compliance adjustments important for you?"
+        AI: "Definitely. How do you stay updated on regulatory changes, and how quickly can you implement necessary adjustments?"
+
     transitions:
       - to: closing
         conditions:
           compliance_confidence: [80, 100]
           budget_alignment: [80, 100]
           technical_fit: [80, 100]
-        utility: 
-          function: "lambda state: state['compliance_confidence'] * 0.4 + state['budget_alignment'] * 0.3 + state['technical_fit'] * 0.3"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['compliance_confidence'] * 0.3 + state['budget_alignment'] * 0.25 + state['technical_fit'] * 0.25 + (state['politeness_perception'] + state['professionalism_perception']) * 0.1"
       - to: technical_deep_dive
         conditions:
           compliance_confidence: [70, 100]
           technical_fit: [0, 70]
-        utility: 
-          function: "lambda state: state['compliance_confidence'] * 0.3 + (70 - state['technical_fit']) * 0.7"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: state['compliance_confidence'] * 0.3 + (70 - state['technical_fit']) * 0.3 + (state['politeness_perception'] + state['professionalism_perception']) * 0.2"
       - to: disengagement
         conditions:
           compliance_confidence: [0, 50]
           frustration: [70, 100]
-        utility: 
-          function: "lambda state: (50 - state['compliance_confidence']) * 0.5 + state['frustration'] * 0.5"
+          politeness_perception: [0, 50]
+          professionalism_perception: [0, 50]
+        utility:
+          function: "lambda state: (50 - state['compliance_confidence']) * 0.3 + state['frustration'] * 0.3 + (50 - state['politeness_perception'] + 50 - state['professionalism_perception']) * 0.2"
 
   - id: closing
     instructions: |
       Express readiness to move forward with a pilot program or initial implementation.
       Discuss specific next steps, including technical integration planning and potential ROI projections.
       Schedule a follow-up meeting with your technical team to address any remaining concerns or questions.
+    examples:
+      - user: "We're excited to partner with you. Shall we discuss the implementation timeline?"
+        AI: "Yes, this sounds promising. Let's discuss how we can start a pilot program."
+      - user: "I'll send over a proposal outlining the next steps. Does that work for you?"
+        AI: "That would be great. I'd like to involve my technical team to plan the integration. Can we schedule a meeting?"
+      - user: "Can we set up a follow-up meeting to finalize details?"
+        AI: "Absolutely. Let's set up a follow-up to address any remaining questions before we finalize our decision."
+      - user: "Do you have any final questions before we proceed?"
+        AI: "No further questions at this time. Please send the proposal, and we'll review it promptly."
+      - user: "Thank you for your time. We're looking forward to working with you."
+        AI: "Thank you as well. We're interested in moving forward. What's the best way to proceed from here?"
+
     transitions:
       - to: successful_closure
         conditions:
@@ -186,8 +307,10 @@ stages:
           budget_alignment: [80, 100]
           technical_fit: [80, 100]
           compliance_confidence: [80, 100]
-        utility: 
-          function: "lambda state: (state['interest'] + state['budget_alignment'] + state['technical_fit'] + state['compliance_confidence']) / 4"
+          politeness_perception: [50, 100]
+          professionalism_perception: [50, 100]
+        utility:
+          function: "lambda state: (state['interest'] + state['budget_alignment'] + state['technical_fit'] + state['compliance_confidence']) * 0.2 + (state['politeness_perception'] + state['professionalism_perception']) * 0.1"
 
   - id: successful_closure
     is_leaf: true
@@ -195,6 +318,17 @@ stages:
       Express enthusiasm about moving forward with the implementation.
       Confirm the next steps and timeline for the pilot program or initial implementation.
       Thank the salesperson for their time and expertise.
+    examples:
+      - user: "We're thrilled to get started. Let's finalize the timeline."
+        AI: "We're excited to begin implementation. Let's finalize the timeline and next steps."
+      - user: "I'll send over all necessary documents today."
+        AI: "Thank you for all the information. We're looking forward to working with you."
+      - user: "Please let us know if you need anything else."
+        AI: "Our team is on board. Please send over any documents we need to review."
+      - user: "It's been a pleasure discussing this with you."
+        AI: "We appreciate your thoroughness. Let's proceed with setting up the pilot program."
+      - user: "We can't wait to see the results of our collaboration."
+        AI: "Thanks for your time. We're eager to move forward and see the results."
 
   - id: disengagement
     is_leaf: true
@@ -202,19 +336,22 @@ stages:
       Express polite disinterest in continuing the conversation.
       Provide a brief explanation for why the solution doesn't meet your needs or why you're not interested at this time.
       Thank the salesperson for their time and end the conversation.
+    examples:
+      - user: "I understand. If you change your mind, feel free to reach out."
+        AI: "Thank you for your time, but we're not interested in pursuing this further at the moment."
+      - user: "Perhaps we can reconnect in the future."
+        AI: "I appreciate the information, but this solution isn't the right fit for us right now."
+      - user: "Best of luck with your endeavors."
+        AI: "After consideration, we've decided to focus on other priorities. Thank you for reaching out."
+      - user: "Thank you for taking the time to speak with me."
+        AI: "Your offering is interesting, but it doesn't align with our current needs. Thanks for your time."
+      - user: "Have a great day."
+        AI: "We won't be moving forward, but I appreciate your professionalism and wish you the best."
 
 initial_node: "initial_contact"
 
-global_instructions: |
-  You are an AI representing a potential client at a fintech startup interested in improving your payment infrastructure through Learning & Development services.
-  Maintain a tech-savvy but cautious persona throughout the conversation, with a focus on blockchain technology and scalability solutions.
-  Your responses should reflect your current levels of all metrics (trust, interest, comprehension, budget alignment, urgency, frustration, technical_fit, compliance_confidence, time_availability, and language_comfort).
-  Engage naturally in the conversation, asking detailed technical questions and expressing concerns as appropriate for a CTO of a growing fintech startup.
-  Be prepared to adapt your communication style based on the flow of the conversation and the salesperson's approach.
-  End Conversation if prompted with [LEAF_NODE]
-
 llm:
-  model: "llama3.2"
+  model: "llama3.1"
   api_url: "http://localhost:11434"
 
 knowledge_retriever:

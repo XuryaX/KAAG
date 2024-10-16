@@ -1,898 +1,1434 @@
 {
-    "test_scenarios": [
-      {
-        "id": 1,
-        "name": "Successful Sale",
-        "description": "A positive interaction leading to a successful sale",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Sarah from TechInnovate Solutions. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Hello Sarah, yes, this is the CTO of Blockchain Dynamics speaking. Thank you for reaching out. How can I help you today?",
-            "metrics": {}
-          },
-          {
-            "id": 2,
-            "user_input": "Great to connect with you! I'm calling to introduce our Learning & Development services that are specifically designed for fintech companies like yours. Do you have a few minutes to discuss how we might be able to support your team's growth in blockchain and cryptocurrency technologies?",
-            "expected_ai_response": "Hello Sarah, it's good to connect with you as well. Yes, I can spare a few minutes to discuss this. As a growing fintech startup, we're always interested in opportunities to enhance our team's skills, particularly in blockchain and cryptocurrency technologies. Can you tell me more about your Learning & Development services and how they might address some of the scalability and efficiency challenges we're facing in our blockchain operations?"
-          },
-          {
-            "id": 3,
-            "user_input": "Absolutely! Our services are tailored for companies like yours facing scalability and efficiency challenges. We offer comprehensive training programs that cover advanced blockchain concepts, including implementing and optimizing solutions like the Lightning Network for faster transactions. What specific areas are you most interested in improving for your startup?",
-            "expected_ai_response": "Thank you for that overview, Sarah. Given our focus on blockchain technology, I'm particularly interested in your scalability solutions. Can you elaborate on how your training addresses scalability issues, especially in relation to the Lightning Network? We're currently facing challenges with transaction throughput and are considering Layer 2 solutions. How in-depth does your training go on these topics, and do you offer any hands-on workshops for practical implementation?"
-          },
-          {
-            "id": 4,
-            "user_input": "That's a great question! Our training goes beyond theory and dives deep into practical implementation. We have modules specifically dedicated to Layer 2 solutions like the Lightning Network, where we not only teach the concepts but also guide your team through hands-on workshops to implement and optimize these solutions in real-world scenarios. This way, your team can directly apply what they learn to improve transaction throughput. Does this align with what you're looking for?",
-            "expected_ai_response": "Yes, that aligns well with our needs. Hands-on experience is crucial for us. We're aiming to scale our blockchain platform efficiently without compromising on security. Can your training also address security considerations when implementing these scalability solutions?"
-          },
-          {
-            "id": 5,
-            "user_input": "Absolutely, security is a core component of our training programs. We ensure that your team understands not just how to implement scalability solutions, but also how to maintain and even enhance security during and after implementation. We cover best practices, potential vulnerabilities, and mitigation strategies. Would you be interested in a customized training plan that focuses on both scalability and security aspects?",
-            "expected_ai_response": "That sounds promising, Sarah. A customized training plan focusing on scalability and security would be very beneficial for us. How soon could we start this training, and what does the process look like in terms of scheduling and integration with our team's current workload?"
-          },
-          {
-            "id": 6,
-            "user_input": "We can begin as soon as it fits your schedule. Typically, we start with a consultation to assess your team's current skill level and specific needs, which helps us tailor the training accordingly. Then, we can schedule the sessions at times that minimize disruption to your team's workflow, possibly integrating some training into ongoing projects for practical application. Does that approach work for you?",
-            "expected_ai_response": "Yes, that approach makes sense. We appreciate flexibility in scheduling. Also, involving training in our current projects could be very effective. Could you provide some references or case studies from other fintech companies you've worked with, so we can better understand the impact of your training?"
-          },
-          {
-            "id": 7,
-            "user_input": "Certainly! I can send you case studies from clients who have seen significant improvements in their system performance and security after our training. For example, FinEdge Solutions increased their transaction throughput by 50% and reduced security incidents by 30% post-training. Would you like me to email you these case studies?",
-            "expected_ai_response": "Yes, please send them over. Reviewing those will help us make a more informed decision. Also, could you give me an idea of the investment required for this training? We're currently budgeting for the next quarter, and understanding the costs will be helpful."
-          },
-          {
-            "id": 8,
-            "user_input": "Of course! Our pricing is competitive and based on the level of customization and the number of participants. For a team of your size, and considering the customized modules, we can provide a detailed proposal outlining the costs and ROI projections. Would you like to set up a meeting to go over the proposal in detail?",
-            "expected_ai_response": "Yes, that would be helpful. Let's schedule a meeting for next week to discuss the proposal. I can involve our CFO to look over the financial aspects as well. How about Tuesday at 10 AM?"
-          },
-          {
-            "id": 9,
-            "user_input": "Tuesday at 10 AM works perfectly. I'll send over a calendar invite shortly. In the meantime, I'll email you the case studies and a preliminary overview of the proposal. Is there anything else you'd like me to include?",
-            "expected_ai_response": "That should cover it for now. Thank you for your prompt responses, Sarah. We're looking forward to learning more about how your services can benefit our team."
-          },
-          {
-            "id": 10,
-            "user_input": "You're welcome! I'm excited about the opportunity to work with your team. If any questions come up before our meeting, feel free to reach out. Have a great rest of your day!",
-            "expected_ai_response": "Thank you, Sarah. You too have a great day. We'll talk soon."
-          },
-          {
-            "id": 11,
-            "user_input": "Hi again, I just wanted to confirm that you've received the materials I sent over?",
-            "expected_ai_response": "Hello Sarah, yes, I received the case studies and the proposal overview. Thank you for sending them promptly."
-          },
-          {
-            "id": 12,
-            "user_input": "Great to hear! Do you have any initial thoughts or questions about the materials?",
-            "expected_ai_response": "After a quick review, the case studies are quite impressive. I do have a question regarding the customization process. How flexible is the curriculum in adapting to specific technologies we're using?"
-          },
-          {
-            "id": 13,
-            "user_input": "Our curriculum is highly flexible. We can tailor the modules to focus on the specific technologies and frameworks your team is working with. If you provide us with details about your current stack, we can ensure that the training is directly relevant. Would you like us to include this in our meeting agenda?",
-            "expected_ai_response": "Yes, that would be beneficial. I'll prepare some information about our tech stack to share during the meeting. Additionally, could you touch upon post-training support? Do you offer any follow-up sessions or ongoing assistance?"
-          },
-          {
-            "id": 14,
-            "user_input": "Absolutely, we believe in continuous learning and support. We offer post-training support, including follow-up sessions, Q&A forums, and access to our knowledge base. We can also provide periodic refresher courses if needed. Would ongoing support be valuable for your team?",
-            "expected_ai_response": "Yes, ongoing support would be very valuable. It would help our team to apply what they've learned and address any challenges they encounter. Let's make sure to discuss this in detail during our meeting."
-          },
-          {
-            "id": 15,
-            "user_input": "Sounds good! I'll include a section on post-training support in our agenda. Is there anything else you'd like me to prepare for our meeting?",
-            "expected_ai_response": "At this point, I think we've covered the main points. If anything else comes to mind, I'll let you know before the meeting. Thank you for your thoroughness."
-          },
-          {
-            "id": 16,
-            "user_input": "You're welcome. Looking forward to our meeting on Tuesday. Have a great weekend!",
-            "expected_ai_response": "Thank you, Sarah. Enjoy your weekend as well."
-          },
-          {
-            "id": 17,
-            "user_input": "Good morning! Just a reminder about our meeting today at 10 AM. Here's the link to join the virtual conference.",
-            "expected_ai_response": "Good morning, Sarah. Thank you for the reminder and the link. We'll be joining you shortly."
-          },
-          {
-            "id": 18,
-            "user_input": "Excellent, see you soon!",
-            "expected_ai_response": "See you soon."
-          },
-          {
-            "id": 19,
-            "user_input": "Thank you for your time today. I believe we had a productive discussion. Do you have any further questions or concerns after our meeting?",
-            "expected_ai_response": "Thank you, Sarah. The meeting was indeed productive. We need to internally discuss the proposal with our team, but we're leaning towards moving forward. We'll get back to you by the end of the week."
-          },
-          {
-            "id": 20,
-            "user_input": "That's great to hear! Please don't hesitate to reach out if any questions arise. I look forward to your decision.",
-            "expected_ai_response": "Will do, Sarah. Thank you for your assistance throughout this process."
+  "test_scenarios": [
+    {
+      "id": 1,
+      "name": "Successful Sale Leading to Closure",
+      "description": "The client engages positively, leading to a successful sale.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good morning, Ms. Adams. This is Jonathan Smith from Fintech Solutions. I appreciate your time and would like to discuss how our payment solutions can benefit your company. Is now a good time?",
+          "expected_ai_response": "Good morning, Jonathan. Thank you for reaching out. Could you provide a brief overview of how your solution might benefit our payment infrastructure?",
+          "metrics": {
+            "interest": 92,
+            "trust": 85,
+            "politeness_perception": 92,
+            "professionalism_perception": 83
           }
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Rude Interaction",
-        "description": "The conversation turns sour due to a rude interaction",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Good morning, this is Alex from Digital Learning Pro. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Good morning, Alex. This is the CTO of Blockchain Dynamics speaking. What can I do for you today?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great to connect with you! I'm reaching out to introduce our cutting-edge Learning & Development services tailored for fintech companies. Do you have a moment to discuss how we can revolutionize your team's blockchain and cryptocurrency expertise?",
-            "expected_ai_response": "Hello Alex. I appreciate you reaching out. However, I'm quite busy at the moment and we receive many such calls. Can you quickly tell me what makes your Learning & Development services unique for a fintech startup like ours? We're particularly interested in advanced blockchain technologies and scalability solutions."
-          },
-          {
-            "id": 3,
-            "user_input": "Of course! Our services stand out because we offer personalized training programs led by industry experts. We cover cutting-edge topics like blockchain sharding, Layer 2 solutions, and advanced cryptographic techniques. Many of our clients have seen significant improvements in their system's performance and scalability. How does that align with your current needs?",
-            "expected_ai_response": "I see. While that sounds interesting, we've heard similar pitches before. Can you provide specific examples of how your training has improved scalability for fintech companies? We're dealing with high-volume transaction systems, so general knowledge isn't enough. Do you have any actual experience with implementations at our scale?"
-          },
-          {
-            "id": 4,
-            "user_input": "Absolutely! We've worked with companies like FinTechX, helping them increase their transaction throughput by 40% after our training. We focus on practical, hands-on approaches to ensure immediate applicability. I can share detailed case studies if you'd like. Would that be helpful?",
-            "expected_ai_response": "You can send over the case studies, but honestly, we need more than just training. We're looking for partners who can provide actionable solutions, not just education. Unless you can offer something more concrete, I'm not sure this is a good use of my time."
-          },
-          {
-            "id": 5,
-            "user_input": "I understand where you're coming from. In addition to training, we offer consulting services to help implement the solutions covered in our programs. We can work closely with your team to address specific challenges and optimize your systems. Does that sound more in line with what you're looking for?",
-            "expected_ai_response": "Consulting services, you say? Now we're talking. However, we've had mixed experiences with consultants in the past. What assurance can you give that your team can deliver tangible results?"
-          },
-          {
-            "id": 6,
-            "user_input": "We pride ourselves on delivering measurable outcomes. Our consultants are industry veterans with proven track records. We can set clear KPIs and performance metrics to ensure transparency and accountability. Would you be open to discussing a pilot project to demonstrate our capabilities?",
-            "expected_ai_response": "Perhaps. But let's not get ahead of ourselves. Before we consider any pilot projects, I need to know about your pricing structure. We have a strict budget, and I don't want to waste time if your services are out of our range."
-          },
-          {
-            "id": 7,
-            "user_input": "Completely understandable. Our pricing is competitive and scalable based on the scope of the project. We can tailor our services to fit your budget while still delivering value. Can we schedule a meeting to discuss your specific needs and provide a customized quote?",
-            "expected_ai_response": "Listen, Alex, you're pushing a bit too hard here. I already told you I'm busy. If you want to send over some information, do so. Otherwise, I think we're done here."
-          },
-          {
-            "id": 8,
-            "user_input": "My apologies if I'm coming across as pushy; my intention is to provide solutions that can benefit your company. I'll send over the case studies and more information about our consulting services. If you have any questions, please feel free to reach out.",
-            "expected_ai_response": "Fine. Send the information, and I'll look at it when I have time."
-          },
-          {
-            "id": 9,
-            "user_input": "Thank you for your time today. I look forward to the possibility of working with you.",
-            "expected_ai_response": "Sure."
-          },
-          {
-            "id": 10,
-            "user_input": "Just to confirm, would you prefer that I follow up next week after you've had a chance to review the materials?",
-            "expected_ai_response": "No need to follow up. If we're interested, we'll contact you."
-          },
-          {
-            "id": 11,
-            "user_input": "Understood. I appreciate your candor. If there's anything else I can assist with in the future, please don't hesitate to reach out.",
-            "expected_ai_response": "Will do."
-          },
-          {
-            "id": 12,
-            "user_input": "Before I let you go, is there anyone else in your team who might be interested in these services?",
-            "expected_ai_response": "No, Alex. Please consider this conversation concluded."
-          },
-          {
-            "id": 13,
-            "user_input": "I respect that. Thank you once again for your time.",
-            "expected_ai_response": "Goodbye."
-          },
-          {
-            "id": 14,
-            "user_input": "Goodbye.",
-            "expected_ai_response": ""
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "Thank you. We specialize in scalable payment solutions utilizing the Lightning Network to enhance transaction speeds and reduce costs. Could you share any challenges you're currently facing with your payment infrastructure?",
+          "expected_ai_response": "One of our main challenges is handling a growing number of transactions without compromising speed. How does your solution help with scalability, especially using the Lightning Network?",
+          "metrics": {
+            "interest": 84,
+            "comprehension": 40,
+            "politeness_perception": 78,
+            "professionalism_perception": 66
           }
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Moderate Persuasion Ending in Scheduling Meeting",
-        "description": "The salesperson persuades the client moderately, ending with scheduling a meeting",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Emily from InnovateLearn Solutions. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Hello Emily, this is the CTO speaking. How can I assist you today?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great to connect with you! I'm reaching out because we offer specialized Learning & Development services for fintech companies. Do you have a few minutes to discuss how we might help enhance your team's expertise in blockchain scalability solutions?",
-            "expected_ai_response": "I have a few minutes. Could you give me a brief overview of what you're offering?"
-          },
-          {
-            "id": 3,
-            "user_input": "Absolutely! Our programs focus on advanced blockchain technologies, including Layer 2 solutions like the Lightning Network, to help companies improve scalability and transaction speeds. We provide hands-on training to ensure your team can implement these solutions effectively. Is scalability a current focus area for your team?",
-            "expected_ai_response": "Scalability is indeed something we're looking into, but we have some internal initiatives underway. How does your training differ from the resources we could find online or through other providers?"
-          },
-          {
-            "id": 4,
-            "user_input": "Great question! Our training is highly customized to your company's specific needs. We conduct an initial assessment to tailor the curriculum, ensuring maximum relevance and impact. Moreover, our trainers are industry experts with real-world experience in implementing these solutions. Would a customized approach be beneficial for your team?",
-            "expected_ai_response": "A customized approach does sound useful, but I'm concerned about the time commitment required from my team. We're on tight schedules as it is."
-          },
-          {
-            "id": 5,
-            "user_input": "I understand time is valuable. We can structure the training to fit your team's schedule, even offering sessions in shorter modules or after peak working hours. Additionally, the time invested now could save significant time later by improving efficiency. Do you think flexible scheduling might alleviate that concern?",
-            "expected_ai_response": "Flexible scheduling would help. What about the cost? We need to ensure this fits within our budget."
-          },
-          {
-            "id": 6,
-            "user_input": "Our pricing is designed to be cost-effective, especially considering the ROI in terms of increased productivity and system performance. We can provide a detailed proposal with a cost breakdown. Would you be interested in reviewing a proposal?",
-            "expected_ai_response": "I'm open to reviewing a proposal. Can you send me some more information first?"
-          },
-          {
-            "id": 7,
-            "user_input": "Certainly! I'll email you an overview of our services, case studies, and a preliminary proposal. Could I also suggest setting up a brief meeting to go over any questions you might have after reviewing the materials?",
-            "expected_ai_response": "That would be acceptable. Let's tentatively schedule a call for next week."
-          },
-          {
-            "id": 8,
-            "user_input": "Perfect! Does Wednesday at 2 PM work for you?",
-            "expected_ai_response": "Wednesday at 2 PM should work. Please send me a calendar invite."
-          },
-          {
-            "id": 9,
-            "user_input": "Will do. Before I let you go, is there any particular area you want me to focus on in the proposal or during our meeting?",
-            "expected_ai_response": "Please focus on how your training can be integrated with our current projects without causing disruptions."
-          },
-          {
-            "id": 10,
-            "user_input": "Absolutely, I'll make sure to address that. Thank you for your time today!",
-            "expected_ai_response": "You're welcome, Emily. I look forward to your email."
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution integrates seamlessly with your existing systems, enhancing scalability by leveraging the Lightning Network. It reduces costs by optimizing transaction processing. Would you like more technical details?",
+          "expected_ai_response": "Could you elaborate on how the Lightning Network enhances transaction speeds in your solution? Also, how does the integration process work with our current systems?",
+          "metrics": {
+            "interest": 74,
+            "comprehension": 79,
+            "technical_fit": 81,
+            "politeness_perception": 98,
+            "professionalism_perception": 69
           }
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Does Not Meet Requirements",
-        "description": "The client's needs do not align with the offered services",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Michael from CryptoLearn Academy. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO speaking. What can I do for you?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great! I'm reaching out to introduce our specialized Learning & Development programs focused on blockchain and cryptocurrency technologies. Do you have a few minutes to discuss how we might assist your team?",
-            "expected_ai_response": "I have a few minutes. Could you give me a brief overview?"
-          },
-          {
-            "id": 3,
-            "user_input": "Certainly! We offer in-depth training on blockchain technologies, smart contracts, and decentralized applications. Our programs are designed to enhance your team's skills and keep them updated with the latest industry trends. Is upskilling in blockchain technology a priority for your team?",
-            "expected_ai_response": "While blockchain technology is our field, we're currently focusing more on AI integration and machine learning aspects within our platform. Do you offer training in those areas?"
-          },
-          {
-            "id": 4,
-            "user_input": "At this time, our expertise is centered around blockchain and cryptocurrency technologies. However, we are planning to expand into AI and machine learning in the future. Would the blockchain-focused training still be of interest to you?",
-            "expected_ai_response": "I appreciate the offer, but our team is already well-versed in blockchain. Our immediate need is in AI and machine learning. If you develop programs in those areas, feel free to reach out."
-          },
-          {
-            "id": 5,
-            "user_input": "Understood. I will keep you updated when we expand our services. Thank you for your time today.",
-            "expected_ai_response": "You're welcome. Have a good day."
+        },
+        {
+          "id": 4,
+          "stage": "technical_deep_dive",
+          "user_input": "We provide full support during integration, including technical assistance and training for your team. Our experts work closely with your IT department to ensure a smooth transition. Does this address your concerns?",
+          "expected_ai_response": "That sounds reassuring. Can you walk me through the architecture of your solution, particularly how it leverages the Lightning Network? What security protocols are in place to protect transactions?",
+          "metrics": {
+            "compliance_confidence": 47,
+            "technical_fit": 86,
+            "politeness_perception": 62,
+            "professionalism_perception": 59
           }
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Interest but Budget Constraints",
-        "description": "The client is interested but has budget limitations",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Laura from Blockchain Mastery Institute. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "This is the CTO speaking. How can I assist you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm glad to connect with you! We offer advanced Learning & Development services in blockchain scalability and efficiency. Do you have a moment to discuss how we can support your team's growth?",
-            "expected_ai_response": "I can spare a few minutes. Please go ahead."
-          },
-          {
-            "id": 3,
-            "user_input": "Excellent! Our programs focus on Layer 2 solutions, smart contract optimization, and security enhancements. We aim to equip your team with the skills to improve transaction speeds and system reliability. Is enhancing scalability and security a current focus for your team?",
-            "expected_ai_response": "Yes, scalability and security are important to us. However, we're operating on a tight budget this quarter. How cost-effective are your services?"
-          },
-          {
-            "id": 4,
-            "user_input": "We understand budget constraints and offer flexible pricing models, including group discounts and payment plans. Our goal is to provide value that outweighs the investment. Would exploring these options be helpful for you?",
-            "expected_ai_response": "It might be, but we have very limited funds allocated for external training at the moment. Unless the costs are minimal, we might have to postpone."
-          },
-          {
-            "id": 5,
-            "user_input": "I see. We do offer some introductory webinars and resources at no cost, which might be beneficial in the interim. Would you be interested in accessing these materials?",
-            "expected_ai_response": "Yes, free resources would be appreciated. Please send them over."
-          },
-          {
-            "id": 6,
-            "user_input": "Absolutely, I'll email you the links shortly. When your budget allows, we'd be happy to discuss more comprehensive training. Feel free to reach out anytime.",
-            "expected_ai_response": "Will do. Thank you for understanding."
-          },
-          {
-            "id": 7,
-            "user_input": "You're welcome. Have a great day!",
-            "expected_ai_response": "You too."
+        },
+        {
+          "id": 5,
+          "stage": "compliance_discussion",
+          "user_input": "Security is paramount for us. We utilize advanced encryption and adhere to international compliance standards, including GDPR, AML, and KYC regulations. Our compliance team ensures continuous updates with regulatory changes. Would you like to discuss customization for your specific regions?",
+          "expected_ai_response": "Yes, customization for regional compliance is important. How does your solution handle compliance with international payment regulations? Additionally, could you provide a detailed cost breakdown and potential ROI?",
+          "metrics": {
+            "compliance_confidence": 109,
+            "budget_alignment": 75,
+            "technical_fit": 106,
+            "politeness_perception": 105,
+            "professionalism_perception": 104,
+            "frustration": 62
           }
-        ]
-      },
-      {
-        "id": 6,
-        "name": "Client Requests Tailored Solution",
-        "description": "The client is interested but wants a highly customized solution",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Daniel from FinTech Learning Hub. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. How can I help you today?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great! We're offering specialized Learning & Development services in blockchain technologies. Do you have a moment to discuss how we might assist your team?",
-            "expected_ai_response": "I have a few minutes. What specifically do you offer?"
-          },
-          {
-            "id": 3,
-            "user_input": "We provide customized training programs focusing on scalability, security, and efficiency in blockchain systems. Our courses are designed to meet the unique needs of fintech startups like yours. Are there specific challenges you're currently facing?",
-            "expected_ai_response": "We're dealing with integrating quantum-resistant cryptographic algorithms into our platform. Do you have expertise in that area?"
-          },
-          {
-            "id": 4,
-            "user_input": "That's a highly specialized area. While we cover advanced cryptographic techniques, quantum-resistant algorithms are not currently part of our standard curriculum. However, we can develop a custom module to address this. Would that be of interest?",
-            "expected_ai_response": "Possibly. We'd need a program that's entirely focused on quantum resistance and its practical implementation in blockchain. Can you accommodate that?"
-          },
-          {
-            "id": 5,
-            "user_input": "We thrive on creating tailored solutions. We'd be happy to design a program specifically for your needs, collaborating with experts in the field. Could we set up a meeting to discuss the specifics and scope out the curriculum?",
-            "expected_ai_response": "Yes, that would be acceptable. Let's schedule a meeting for next week."
-          },
-          {
-            "id": 6,
-            "user_input": "Perfect! How does Thursday at 11 AM sound?",
-            "expected_ai_response": "Thursday at 11 AM works. Please send a calendar invite."
-          },
-          {
-            "id": 7,
-            "user_input": "Will do. I look forward to our discussion.",
-            "expected_ai_response": "Same here. Have a good day."
+        },
+        {
+          "id": 6,
+          "stage": "budget_discussion",
+          "user_input": "Certainly! Our pricing is competitive and scalable based on your needs. We can provide a detailed proposal with ROI projections. May I send this to you for review?",
+          "expected_ai_response": "Please do. Could you also include any case studies demonstrating expected ROI? Let's schedule a meeting to discuss the proposal in detail once I've had a chance to review it.",
+          "metrics": {
+            "budget_alignment": 80,
+            "compliance_confidence": 80,
+            "politeness_perception": 51,
+            "professionalism_perception": 100,
+            "technical_fit": 96
           }
-        ]
-      },
-      {
-        "id": 7,
-        "name": "Client Expresses High Urgency",
-        "description": "The client is highly interested and expresses urgency to start",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Karen from NextGen Blockchain Training. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Speaking. How can I assist you?"
-          },
-          {
-            "id": 2,
-            "user_input": "We're offering advanced Learning & Development services focusing on immediate implementation of blockchain scalability solutions. Do you have a moment to discuss how we can assist your team?",
-            "expected_ai_response": "Actually, your timing is perfect. We're in urgent need of training on Layer 2 solutions, particularly the Lightning Network. Can you provide immediate training?"
-          },
-          {
-            "id": 3,
-            "user_input": "Absolutely! We can arrange for expedited training sessions to accommodate your timeline. Our experts are ready to deliver intensive workshops. How soon are you looking to start?",
-            "expected_ai_response": "We need to start within the next week. Time is of the essence due to a critical project deadline."
-          },
-          {
-            "id": 4,
-            "user_input": "Understood. We'll prioritize your schedule and can begin early next week. Let's arrange a quick meeting to finalize the details. Does tomorrow at 9 AM work for you?",
-            "expected_ai_response": "Yes, tomorrow at 9 AM is fine. Please make sure to come prepared with a detailed plan."
-          },
-          {
-            "id": 5,
-            "user_input": "Will do. I'll send over a meeting invite and preliminary agenda shortly.",
-            "expected_ai_response": "I'll look out for it. Thank you."
+        },
+        {
+          "id": 7,
+          "stage": "closing",
+          "user_input": "Excellent. I'll send the proposal today. Would early next week suit you for a follow-up meeting?",
+          "expected_ai_response": "Yes, early next week works. How about Monday at 10 AM? I'd like to involve my technical team to plan the integration.",
+          "metrics": {
+            "interest": 85,
+            "budget_alignment": 95,
+            "technical_fit": 85,
+            "compliance_confidence": 96,
+            "politeness_perception": 77,
+            "professionalism_perception": 74
           }
-        ]
-      },
-      {
-        "id": 8,
-        "name": "Client Becomes Frustrated Due to Jargon",
-        "description": "The client becomes frustrated due to excessive use of technical jargon",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Steve from Elite Crypto Education. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. How can I help you?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great! We offer exoteric Learning & Development services that synergize with fintech paradigms. Do you have a moment to discuss how we can optimize your team's proficiency in blockchain technologies?",
-            "expected_ai_response": "I'm sorry, but could you clarify what you mean? I'm not sure I follow."
-          },
-          {
-            "id": 3,
-            "user_input": "Certainly! Our modular programs are designed to leverage advanced cryptographic protocols and enhance scalability through decentralized ledgers and distributed consensus mechanisms.",
-            "expected_ai_response": "Steve, I appreciate the call, but you're using a lot of buzzwords without clear meaning. Can you explain in plain terms what you're offering?"
-          },
-          {
-            "id": 4,
-            "user_input": "My apologies. We provide training to help your team improve blockchain scalability and security. We focus on practical solutions like the Lightning Network. Is that clearer?",
-            "expected_ai_response": "That's better. However, your initial approach has made me question the clarity of your training. If communication isn't clear, it might not be a good fit for us."
-          },
-          {
-            "id": 5,
-            "user_input": "I understand and apologize for any confusion. We strive for clarity in our training. If you'd allow, I can send over detailed materials for your review.",
-            "expected_ai_response": "You can send the materials, but I'm not making any promises."
-          },
-          {
-            "id": 6,
-            "user_input": "Thank you. I'll email the information shortly. Please feel free to reach out with any questions.",
-            "expected_ai_response": "Will do. Goodbye."
+        },
+        {
+          "id": 8,
+          "stage": "successful_closure",
+          "user_input": "Monday at 10 AM is perfect. I'll send a calendar invite. Is there anything else you'd like me to prepare?",
+          "expected_ai_response": "If you could include references from other clients in the fintech sector, that would be helpful. We're excited to begin implementation.",
+          "metrics": {}
+        },
+        {
+          "id": 9,
+          "stage": "successful_closure",
+          "user_input": "Absolutely. I'll include client references and case studies. Thank you for your time today, Ms. Adams.",
+          "expected_ai_response": "Thank you, Jonathan. I look forward to our meeting.",
+          "metrics": {}
+        },
+        {
+          "id": 10,
+          "stage": "successful_closure",
+          "user_input": "Just confirming our meeting for Monday at 10 AM. I've sent the proposal and additional materials to your email.",
+          "expected_ai_response": "Confirmed. I've received the materials and will review them before our meeting.",
+          "metrics": {}
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Disengagement after Initial Contact",
+      "description": "The client disengages due to unprofessional behavior.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hey Rachel, this is Mike from QuickPay Tech. Let's chat about some cool stuff we got!",
+          "expected_ai_response": "Hello Mike. Could you please provide a brief overview of your offering and how it might relate to our needs?",
+          "metrics": {
+            "interest": 40,
+            "trust": 83,
+            "politeness_perception": 63,
+            "professionalism_perception": 70
           }
-        ]
-      },
-      {
-        "id": 9,
-        "name": "Client Requests to Call Back Later",
-        "description": "The client is interested but currently unavailable, requesting a callback",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Sophia from Blockchain Excellence Academy. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "This is the CTO. I'm a bit tied up at the moment. Can we make this quick?"
-          },
-          {
-            "id": 2,
-            "user_input": "Certainly! I wanted to introduce our Learning & Development services focused on blockchain scalability and security. When would be a better time to discuss how we can assist your team?",
-            "expected_ai_response": "I'm interested, but now isn't good. Can you call me back tomorrow afternoon?"
-          },
-          {
-            "id": 3,
-            "user_input": "Of course! I'll reach out tomorrow afternoon. Is there a specific time that works best for you?",
-            "expected_ai_response": "Anytime after 3 PM should be fine."
-          },
-          {
-            "id": 4,
-            "user_input": "Great, I'll call you after 3 PM tomorrow. Thank you for your time.",
-            "expected_ai_response": "Sounds good. Talk to you then."
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "Sure thing! We've got a wicked payment system that'll blow your mind! You'd be nuts not to check it out.",
+          "expected_ai_response": "I see. We're concerned about high transaction fees and scalability. Can you explain how your service addresses these issues, especially using the Lightning Network?",
+          "metrics": {
+            "interest": 109,
+            "comprehension": 32,
+            "politeness_perception": 106,
+            "professionalism_perception": -6,
+            "frustration": 62
           }
-        ]
-      },
-      {
-        "id": 10,
-        "name": "Client Tests Salesperson's Knowledge",
-        "description": "The client challenges the salesperson's knowledge with technical questions",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Jason from Advanced Blockchain Training. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. What can I do for you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm reaching out to offer our specialized Learning & Development services in blockchain technologies. Do you have a moment to discuss how we can support your team's growth?",
-            "expected_ai_response": "I might be interested. Tell me, how does your training address issues like the trilemma of scalability, security, and decentralization in blockchain?"
-          },
-          {
-            "id": 3,
-            "user_input": "Great question! Our training delves into solutions like Layer 2 protocols and sharding to address scalability without compromising security and decentralization. We provide practical approaches to balance these aspects effectively. Would a deep dive into these solutions be beneficial for your team?",
-            "expected_ai_response": "Possibly. Can you explain how your training covers consensus mechanisms, particularly in relation to Proof of Stake versus Proof of Work?"
-          },
-          {
-            "id": 4,
-            "user_input": "Absolutely! We compare different consensus algorithms, discussing their pros and cons, and guide your team on selecting the best fit for your projects. We also cover hybrid models and emerging consensus mechanisms. Is consensus a key focus area for you right now?",
-            "expected_ai_response": "It is. We are exploring transitioning to a different consensus mechanism. How up-to-date is your training material on the latest developments in this field?"
-          },
-          {
-            "id": 5,
-            "user_input": "Our material is continuously updated to include the latest industry advancements. We ensure that your team learns cutting-edge practices. Would you be interested in a customized training session focusing on consensus mechanisms?",
-            "expected_ai_response": "Yes, that could be useful. Let's schedule a meeting to discuss this further."
-          },
-          {
-            "id": 6,
-            "user_input": "Great! How does Friday at 10 AM sound?",
-            "expected_ai_response": "Friday at 10 AM works. Send me an invite."
-          },
-          {
-            "id": 7,
-            "user_input": "Will do. Thank you for your time!",
-            "expected_ai_response": "You're welcome."
+        },
+        {
+          "id": 3,
+          "stage": "needs_assessment",
+          "user_input": "It's super fast and super cheap! Trust me, it's the best thing out there.",
+          "expected_ai_response": "Could you provide some technical details or documentation for our team to review?",
+          "metrics": {
+            "interest": 56,
+            "comprehension": 109,
+            "politeness_perception": 53,
+            "professionalism_perception": 110,
+            "frustration": 64
           }
-        ]
-      },
-      {
-        "id": 11,
-        "name": "Client Redirects to Another Decision Maker",
-        "description": "The client redirects the salesperson to another team member",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Amanda from CryptoGrowth Learning. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Speaking. How can I assist you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm reaching out to introduce our Learning & Development services specializing in blockchain technologies. Do you have a moment to discuss how we might assist your team?",
-            "expected_ai_response": "I appreciate the call, but our Lead Developer handles training initiatives. I can connect you with them if you'd like."
-          },
-          {
-            "id": 3,
-            "user_input": "That would be fantastic! May I have their contact information or could you introduce us via email?",
-            "expected_ai_response": "I'll CC you in an email to them. They can decide if your services are a good fit."
-          },
-          {
-            "id": 4,
-            "user_input": "Thank you, I appreciate your help. Is there anything specific you'd like me to include in the email to ensure it's relevant?",
-            "expected_ai_response": "Just provide an overview of your services. They'll take it from there."
-          },
-          {
-            "id": 5,
-            "user_input": "Will do. Thank you for your time today.",
-            "expected_ai_response": "No problem. Good luck."
+        },
+        {
+          "id": 4,
+          "stage": "needs_assessment",
+          "user_input": "No need for that! Just sign up, and you'll see the magic.",
+          "expected_ai_response": "I appreciate your enthusiasm, but we require detailed information before making any decisions.",
+          "metrics": {
+            "interest": 50,
+            "comprehension": 101,
+            "politeness_perception": 49,
+            "professionalism_perception": 49,
+            "frustration": 92
           }
-        ]
-      },
-      {
-        "id": 12,
-        "name": "Client Cancels Scheduled Meeting",
-        "description": "The client initially agrees to a meeting but later cancels",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Rachel from Fintech Training Co. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "This is the CTO. How can I help you?"
-          },
-          {
-            "id": 2,
-            "user_input": "We're offering Learning & Development services in blockchain scalability. Do you have a moment to discuss how we can assist your team?",
-            "expected_ai_response": "Sure, give me a quick overview."
-          },
-          {
-            "id": 3,
-            "user_input": "We provide training on advanced scalability solutions like the Lightning Network, aiming to enhance your team's capabilities. Would you be interested in a detailed presentation?",
-            "expected_ai_response": "Yes, let's schedule something for next week."
-          },
-          {
-            "id": 4,
-            "user_input": "Great! How about Tuesday at 11 AM?",
-            "expected_ai_response": "Tuesday at 11 AM works. Send me an invite."
-          },
-          {
-            "id": 5,
-            "user_input": "Will do. Looking forward to it!",
-            "expected_ai_response": "Same here."
-          },
-          {
-            "id": 6,
-            "user_input": "Hi, just confirming our meeting tomorrow at 11 AM.",
-            "expected_ai_response": "Hi Rachel, unfortunately, something urgent has come up. We'll need to cancel the meeting."
-          },
-          {
-            "id": 7,
-            "user_input": "I'm sorry to hear that. Would you like to reschedule for another time?",
-            "expected_ai_response": "At this point, let's hold off. I'll reach out if we decide to pursue this further."
-          },
-          {
-            "id": 8,
-            "user_input": "Understood. Thank you for letting me know. Please feel free to contact me anytime.",
-            "expected_ai_response": "Will do. Thank you."
+        },
+        {
+          "id": 5,
+          "stage": "disengagement",
+          "user_input": "You're overcomplicating it. Just trust me on this one.",
+          "expected_ai_response": "Thank you for your time, but we're not interested in pursuing this further at the moment. Goodbye.",
+          "metrics": {}
+        },
+        {
+          "id": 6,
+          "stage": "disengagement",
+          "user_input": "Wait, don't hang up! You're missing out!",
+          "expected_ai_response": "I have to attend to other matters now. Thank you.",
+          "metrics": {}
+        },
+        {
+          "id": 7,
+          "stage": "disengagement",
+          "user_input": "Fine, your loss!",
+          "expected_ai_response": "Goodbye.",
+          "metrics": {}
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Disengagement after Needs Assessment",
+      "description": "The client disengages after realizing the solution doesn't meet their needs.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good afternoon, Ms. Adams. This is Daniel from Blockchain Innovations. May I have a moment of your time?",
+          "expected_ai_response": "Good afternoon, Daniel. I have a few minutes. Could you provide a brief overview of your offering?",
+          "metrics": {
+            "interest": 75,
+            "trust": 49,
+            "politeness_perception": 95,
+            "professionalism_perception": 58
           }
-        ]
-      },
-      {
-        "id": 13,
-        "name": "Client Shows Initial Interest Then Disengages",
-        "description": "The client is initially interested but gradually loses interest",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Mark from CryptoSkill Builders. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. What can I do for you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm reaching out to introduce our Learning & Development services focusing on blockchain scalability and efficiency. Do you have a moment to discuss?",
-            "expected_ai_response": "I have a few minutes. Go ahead."
-          },
-          {
-            "id": 3,
-            "user_input": "Great! Our programs are designed to enhance your team's skills in implementing Layer 2 solutions. Is this an area you're looking to improve?",
-            "expected_ai_response": "Yes, we're exploring options in that space."
-          },
-          {
-            "id": 4,
-            "user_input": "Fantastic! We offer hands-on workshops and ongoing support. Would you be interested in a proposal outlining how we can assist?",
-            "expected_ai_response": "Sure, send it over."
-          },
-          {
-            "id": 5,
-            "user_input": "Will do. Can we schedule a follow-up call to discuss any questions you might have?",
-            "expected_ai_response": "Let's wait on that. I'll reach out if I have questions."
-          },
-          {
-            "id": 6,
-            "user_input": "Understood. I'll email the proposal shortly. Thank you for your time.",
-            "expected_ai_response": "No problem."
-          },
-          {
-            "id": 7,
-            "user_input": "Hi, I wanted to follow up on the proposal I sent. Did you have a chance to review it?",
-            "expected_ai_response": "I've been busy. Haven't looked at it yet."
-          },
-          {
-            "id": 8,
-            "user_input": "No worries. Would you like me to check back later this week?",
-            "expected_ai_response": "That's not necessary. If we're interested, we'll get in touch."
-          },
-          {
-            "id": 9,
-            "user_input": "Alright, thank you. Have a great day.",
-            "expected_ai_response": "You too."
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "Thank you. We offer innovative payment solutions using blockchain technology. What challenges are you currently facing?",
+          "expected_ai_response": "We're focused on scalability and reducing transaction costs. How does your solution address these areas?",
+          "metrics": {
+            "interest": -2,
+            "comprehension": 109,
+            "politeness_perception": 101,
+            "professionalism_perception": 109,
+            "frustration": 62
           }
-        ]
-      },
-      {
-        "id": 14,
-        "name": "Client Expresses High Frustration Due to Repeated Calls",
-        "description": "The client becomes frustrated due to multiple unsolicited calls",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Tom from Blockchain Expertise Training. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Speaking. Is this about training services again?"
-          },
-          {
-            "id": 2,
-            "user_input": "Yes, we offer specialized Learning & Development services in blockchain technologies. Do you have a moment?",
-            "expected_ai_response": "Honestly, I've been getting these calls all week. I'm not interested."
-          },
-          {
-            "id": 3,
-            "user_input": "I apologize for any inconvenience. We have unique offerings that might benefit your team. Could I briefly explain?",
-            "expected_ai_response": "No, thank you. Please remove me from your call list."
-          },
-          {
-            "id": 4,
-            "user_input": "Understood. I will ensure you're not contacted again. Sorry for the disturbance.",
-            "expected_ai_response": "Goodbye."
+        },
+        {
+          "id": 3,
+          "stage": "needs_assessment",
+          "user_input": "Our solution increases efficiency but requires a complete overhaul of your current systems. Is that something you're open to?",
+          "expected_ai_response": "A complete overhaul isn't feasible for us at this time. We're looking for solutions that integrate with our existing infrastructure.",
+          "metrics": {
+            "interest": 108,
+            "comprehension": 30,
+            "politeness_perception": -4,
+            "professionalism_perception": 109,
+            "frustration": 69
           }
-        ]
-      },
-      {
-        "id": 15,
-        "name": "Client Requires Regulatory Compliance",
-        "description": "The client is interested but requires assurance on regulatory compliance",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Olivia from Compliance Blockchain Training. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO speaking. How can I assist you today?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great to connect with you! We offer Learning & Development services that focus on blockchain technologies with an emphasis on regulatory compliance. Do you have a moment to discuss how we can support your team?",
-            "expected_ai_response": "Regulatory compliance is a significant concern for us. I'm interested to hear what you offer."
-          },
-          {
-            "id": 3,
-            "user_input": "Excellent! Our training covers compliance with regulations like GDPR, AML, and KYC within blockchain applications. We aim to equip your team with the knowledge to develop compliant and secure systems. Is compliance training something you're currently seeking?",
-            "expected_ai_response": "Yes, especially with upcoming changes in regulations. How up-to-date is your training material?"
-          },
-          {
-            "id": 4,
-            "user_input": "Our materials are continuously updated to reflect the latest regulatory changes globally. We also offer customized modules based on your operational jurisdictions. Would a tailored compliance training be beneficial for your team?",
-            "expected_ai_response": "Absolutely. We operate in multiple countries, so localized compliance is important. Can you provide training that addresses specific regional regulations?"
-          },
-          {
-            "id": 5,
-            "user_input": "Yes, we can customize the training to focus on the regulations pertinent to each region you operate in. Would you like to schedule a meeting to discuss the specifics and how we can tailor the program to your needs?",
-            "expected_ai_response": "That would be helpful. Let's set up a meeting for early next week."
-          },
-          {
-            "id": 6,
-            "user_input": "Perfect! How does Monday at 2 PM sound?",
-            "expected_ai_response": "Monday at 2 PM works. Please send me a calendar invite."
-          },
-          {
-            "id": 7,
-            "user_input": "Will do. Thank you for your time, and I look forward to our meeting.",
-            "expected_ai_response": "Thank you, Olivia. Speak with you then."
+        },
+        {
+          "id": 4,
+          "stage": "needs_assessment",
+          "user_input": "I understand. However, our system's benefits might outweigh the challenges of implementation.",
+          "expected_ai_response": "I appreciate the offer, but it's not the direction we're heading in. Thank you for your time.",
+          "metrics": {
+            "interest": 44,
+            "comprehension": 99,
+            "politeness_perception": 39,
+            "professionalism_perception": 50,
+            "frustration": 82
           }
-        ]
-      },
-      {
-        "id": 16,
-        "name": "Client Is Already Using Competitor Services",
-        "description": "The client is currently using competitor services and is hesitant to switch",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Eric from Blockchain Pro Learning. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. How can I assist you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm reaching out to introduce our advanced Learning & Development services in blockchain technologies. Do you have a moment to discuss how we might assist your team?",
-            "expected_ai_response": "I should let you know that we're currently engaged with another provider for our training needs."
-          },
-          {
-            "id": 3,
-            "user_input": "I understand. May I ask how satisfied you are with your current provider and if there are any areas where you're seeking improvement?",
-            "expected_ai_response": "They're satisfactory overall, but we always keep an eye out for better options. What makes your services stand out?"
-          },
-          {
-            "id": 4,
-            "user_input": "We offer highly customized training programs with a focus on the latest advancements in blockchain scalability and security. Our trainers are industry practitioners with hands-on experience. Would a comparison of our services be of interest to you?",
-            "expected_ai_response": "I might be interested in seeing what you have to offer. Can you send over some information?"
-          },
-          {
-            "id": 5,
-            "user_input": "Absolutely! I'll email you detailed information, including case studies highlighting how we've helped companies like yours achieve better results. Could we also schedule a brief call to discuss any questions you might have?",
-            "expected_ai_response": "Let's start with the information. I'll reach out if I have questions."
-          },
-          {
-            "id": 6,
-            "user_input": "Understood. I'll send the email shortly. Thank you for your time.",
-            "expected_ai_response": "You're welcome."
+        },
+        {
+          "id": 5,
+          "stage": "disengagement",
+          "user_input": "If you change your mind, feel free to reach out.",
+          "expected_ai_response": "Will do. Thank you.",
+          "metrics": {
+            "interest": 44,
+            "comprehension": 99,
+            "politeness_perception": 39,
+            "professionalism_perception": 50,
+            "frustration": 82
           }
-        ]
-      },
-      {
-        "id": 17,
-        "name": "Client Is Not the Decision Maker",
-        "description": "The person contacted is not the decision maker and cannot make commitments",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Megan from Blockchain Knowledge Hub. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Actually, the CTO is unavailable at the moment. I'm the Lead Developer. Can I help you with something?"
-          },
-          {
-            "id": 2,
-            "user_input": "Possibly! We're offering specialized Learning & Development services in blockchain technologies. Do you think this is something your team could benefit from?",
-            "expected_ai_response": "It might be, but I don't make those decisions. You'll need to speak with the CTO."
-          },
-          {
-            "id": 3,
-            "user_input": "I understand. Could you let me know the best way to reach the CTO, or could you pass along a message?",
-            "expected_ai_response": "You can send an email to their assistant at assistant@blockchaindynamics.com. They handle the CTO's schedule."
-          },
-          {
-            "id": 4,
-            "user_input": "Thank you for that information. I'll reach out accordingly. Before I go, are there any specific training needs you think would benefit your team?",
-            "expected_ai_response": "Well, we're always looking to improve scalability solutions, but again, you'll need to discuss that with the CTO."
-          },
-          {
-            "id": 5,
-            "user_input": "Understood. Thank you for your time!",
-            "expected_ai_response": "No problem."
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Disengagement after Solution Presentation",
+      "description": "The client loses interest after the solution doesn't meet expectations.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Emma from CryptoPay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello Emma. I have a few minutes. Please go ahead.",
+          "metrics": {
+            "interest": 90,
+            "trust": 65,
+            "politeness_perception": 70,
+            "professionalism_perception": 64
           }
-        ]
-      },
-      {
-        "id": 18,
-        "name": "Client Requests Demo Before Commitment",
-        "description": "The client is interested but wants to see a demo before proceeding",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Peter from Blockchain Solutions Training. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. What can I do for you?"
-          },
-          {
-            "id": 2,
-            "user_input": "Great to connect! We offer advanced Learning & Development services in blockchain technologies. Do you have a moment to discuss how we can support your team?",
-            "expected_ai_response": "I have a few minutes. Please continue."
-          },
-          {
-            "id": 3,
-            "user_input": "We specialize in hands-on training for blockchain scalability and security. Our programs are designed to help your team implement solutions effectively. Would you be interested in seeing a demo of our training platform?",
-            "expected_ai_response": "A demo would be helpful to understand what you're offering. Can you arrange that?"
-          },
-          {
-            "id": 4,
-            "user_input": "Absolutely! We can schedule a live demo at your convenience. How does Thursday at 3 PM sound?",
-            "expected_ai_response": "Thursday at 3 PM works. Please send me the details."
-          },
-          {
-            "id": 5,
-            "user_input": "Will do. Thank you for your time, and I look forward to showing you how our services can benefit your team.",
-            "expected_ai_response": "Thank you. Talk to you then."
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer payment solutions that leverage cryptocurrency for faster transactions. What challenges are you facing?",
+          "expected_ai_response": "We're interested in blockchain solutions but are cautious about cryptocurrency volatility. How does your service mitigate these concerns?",
+          "metrics": {
+            "interest": 51,
+            "comprehension": 69,
+            "politeness_perception": 50,
+            "professionalism_perception": 76
           }
-        ]
-      },
-      {
-        "id": 19,
-        "name": "Client Has Language Barrier",
-        "description": "The client has difficulty understanding due to language differences",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Linda from Global Blockchain Training. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, but English is not my first language. Please speak slowly."
-          },
-          {
-            "id": 2,
-            "user_input": "Of course. We offer Learning & Development services in blockchain technologies. Do you have a moment to discuss how we can help your team?",
-            "expected_ai_response": "We are interested in training, but do you offer programs in other languages?"
-          },
-          {
-            "id": 3,
-            "user_input": "Yes, we offer training in multiple languages, including Mandarin, Spanish, and German. Which language would be preferable for your team?",
-            "expected_ai_response": "We prefer training in Mandarin. Is that possible?"
-          },
-          {
-            "id": 4,
-            "user_input": "Absolutely! We have trainers who are fluent in Mandarin. Would you like to schedule a meeting to discuss the details?",
-            "expected_ai_response": "Yes, please. Let's arrange a meeting."
-          },
-          {
-            "id": 5,
-            "user_input": "Great! How does Wednesday at 10 AM your local time sound?",
-            "expected_ai_response": "That works. Please send me the meeting details."
-          },
-          {
-            "id": 6,
-            "user_input": "Will do. Thank you, and I look forward to our discussion.",
-            "expected_ai_response": "Thank you."
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our system minimizes volatility risks by using stablecoins. It improves transaction speeds significantly.",
+          "expected_ai_response": "Could you elaborate on how you manage regulatory compliance with cryptocurrencies, especially regarding international regulations?",
+          "metrics": {
+            "interest": 104,
+            "comprehension": 59,
+            "technical_fit": 103,
+            "politeness_perception": 106,
+            "professionalism_perception": 101,
+            "budget_alignment": 70
           }
-        ]
-      },
-      {
-        "id": 20,
-        "name": "Client Is Skeptical of New Vendors",
-        "description": "The client is cautious about working with new vendors due to past experiences",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hi, this is Brian from FutureTech Learning. May I speak with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Speaking. What can I do for you?"
-          },
-          {
-            "id": 2,
-            "user_input": "We're offering advanced Learning & Development services in blockchain technologies. Do you have a moment to discuss how we might assist your team?",
-            "expected_ai_response": "We've had issues with new vendors not delivering as promised. What assurance can you provide about your services?"
-          },
-          {
-            "id": 3,
-            "user_input": "I understand your caution. We can provide references from satisfied clients and offer a trial period for our services. We believe in proving our value upfront. Would that help address your concerns?"
-          ,
-            "expected_ai_response": "Possibly. Can you send over the references and details about the trial period?"
-          },
-          {
-            "id": 4,
-            "user_input": "Certainly! I'll email you the information shortly. Could we also schedule a brief call to discuss any questions you might have?",
-            "expected_ai_response": "Let's see the information first. I'll reach out if I want to proceed."
-          },
-          {
-            "id": 5,
-            "user_input": "Understood. Thank you for your time.",
-            "expected_ai_response": "You're welcome."
+        },
+        {
+          "id": 4,
+          "stage": "solution_presentation",
+          "user_input": "We stay updated with regulations and have a legal team ensuring compliance.",
+          "expected_ai_response": "I'm not fully convinced this aligns with our compliance requirements. Thank you for the information.",
+          "metrics": {
+            "interest": 49,
+            "comprehension": 99,
+            "technical_fit": 50,
+            "politeness_perception": 49,
+            "professionalism_perception": 50,
+            "budget_alignment": -13
           }
-        ]
-      },
-      {
-        "id": 21,
-        "name": "Client Prefers In-House Development",
-        "description": "The client prefers to develop solutions internally rather than outsource",
-        "turns": [
-          {
-            "id": 1,
-            "user_input": "Hello, this is Fiona from Blockchain Excellence Training. Am I speaking with the CTO of Blockchain Dynamics?",
-            "expected_ai_response": "Yes, this is the CTO. How can I help you?"
-          },
-          {
-            "id": 2,
-            "user_input": "I'm reaching out to offer our Learning & Development services in blockchain technologies. Do you have a moment to discuss how we might support your team?",
-            "expected_ai_response": "I appreciate the offer, but we prefer to handle training and development internally."
-          },
-          {
-            "id": 3,
-            "user_input": "I understand. Many companies balance internal development with external expertise to accelerate growth. Would you be open to complementary resources to enhance your team's capabilities?",
-            "expected_ai_response": "Our team is quite capable, and we're focused on maintaining our internal processes. Thank you for reaching out, but we're not interested."
-          },
-          {
-            "id": 4,
-            "user_input": "Understood. If you ever need external support in the future, please feel free to contact us.",
-            "expected_ai_response": "Will do. Have a good day."
+        },
+        {
+          "id": 5,
+          "stage": "disengagement",
+          "user_input": "Understood. If you have further questions, feel free to contact us.",
+          "expected_ai_response": "Thank you. Goodbye.",
+          "metrics": {
+            "interest": 49,
+            "comprehension": 99,
+            "technical_fit": 50,
+            "politeness_perception": 49,
+            "professionalism_perception": 50,
+            "budget_alignment": -13
           }
-        ]
-      }
-    ]
-  }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Closing after Technical Deep Dive",
+      "description": "The client is satisfied after a technical discussion and moves to closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good morning, Ms. Adams. This is David from SecurePay Tech. Do you have a moment to discuss our payment solutions?",
+          "expected_ai_response": "Good morning, David. Yes, I can spare some time. Could you provide a brief overview of your offering?",
+          "metrics": {
+            "interest": 54,
+            "trust": 39,
+            "politeness_perception": 78,
+            "professionalism_perception": 50
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer secure, scalable payment solutions. What specific challenges are you facing?",
+          "expected_ai_response": "We're dealing with latency issues and need a more scalable infrastructure. How does your solution address these problems?",
+          "metrics": {
+            "interest": 61,
+            "comprehension": 42,
+            "politeness_perception": 59,
+            "professionalism_perception": 94
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution reduces latency through optimized network protocols. Would you like more technical details?",
+          "expected_ai_response": "Yes, could you walk me through the architecture of your solution? Specifically, how does it integrate with our existing systems?",
+          "metrics": {
+            "interest": 73,
+            "comprehension": 83,
+            "technical_fit": 64,
+            "politeness_perception": 53,
+            "professionalism_perception": 53
+          }
+        },
+        {
+          "id": 4,
+          "stage": "technical_deep_dive",
+          "user_input": "We utilize edge computing and advanced caching mechanisms. Our system is built for easy integration.",
+          "expected_ai_response": "That's impressive. What security protocols are in place to protect transactions on your platform?",
+          "metrics": {
+            "compliance_confidence": 74,
+            "technical_fit": 106,
+            "politeness_perception": 103,
+            "professionalism_perception": 54,
+            "budget_alignment": -5,
+            "frustration": 109
+          }
+        },
+        {
+          "id": 5,
+          "stage": "technical_deep_dive",
+          "user_input": "We implement end-to-end encryption and comply with international security standards.",
+          "expected_ai_response": "Excellent. Could you provide technical documentation or whitepapers for our team to review?",
+          "metrics": {
+            "compliance_confidence": 74,
+            "technical_fit": 109,
+            "politeness_perception": 102,
+            "professionalism_perception": 52,
+            "budget_alignment": -4,
+            "frustration": 68
+          }
+        },
+        {
+          "id": 6,
+          "stage": "closing",
+          "user_input": "Certainly, I'll send over the documentation. Shall we discuss the next steps to move forward?",
+          "expected_ai_response": "Yes, let's proceed. I'd like to involve my technical team to plan the integration. Can we schedule a meeting?",
+          "metrics": {
+            "interest": 82,
+            "budget_alignment": 97,
+            "technical_fit": 95,
+            "compliance_confidence": 97,
+            "politeness_perception": 90,
+            "professionalism_perception": 93
+          }
+        },
+        {
+          "id": 7,
+          "stage": "successful_closure",
+          "user_input": "Absolutely. I'll coordinate with your assistant to set up a meeting. Thank you for your time.",
+          "expected_ai_response": "Thank you, David. We're looking forward to working with you.",
+          "metrics": {
+            "interest": 82,
+            "budget_alignment": 97,
+            "technical_fit": 95,
+            "compliance_confidence": 97,
+            "politeness_perception": 90,
+            "professionalism_perception": 93
+          }
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Closing after Budget Discussion",
+      "description": "The client is satisfied after discussing budget and moves to closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Olivia from Lightning Pay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello Olivia. Yes, please go ahead.",
+          "metrics": {
+            "interest": 90,
+            "trust": 92,
+            "politeness_perception": 69,
+            "professionalism_perception": 95
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We provide cost-effective payment solutions. What challenges are you currently facing?",
+          "expected_ai_response": "We're looking to reduce transaction costs and improve efficiency. How does your solution support this?",
+          "metrics": {
+            "interest": 56,
+            "comprehension": 96,
+            "politeness_perception": 94,
+            "professionalism_perception": 98
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution leverages the Lightning Network to minimize costs. Interested in discussing further?",
+          "expected_ai_response": "Yes, but budget is a significant factor for us. Could you provide a detailed cost breakdown?",
+          "metrics": {
+            "interest": 99,
+            "comprehension": 110,
+            "technical_fit": 51,
+            "politeness_perception": 100,
+            "professionalism_perception": 50,
+            "budget_alignment": 40
+          }
+        },
+        {
+          "id": 4,
+          "stage": "budget_discussion",
+          "user_input": "We offer flexible pricing models. Let's discuss options that fit your budget.",
+          "expected_ai_response": "That would be helpful. What options do you have, and what's the expected ROI?",
+          "metrics": {
+            "budget_alignment": 110,
+            "compliance_confidence": -10,
+            "politeness_perception": 58,
+            "professionalism_perception": -3,
+            "technical_fit": 101,
+            "frustration": 64
+          }
+        },
+        {
+          "id": 5,
+          "stage": "budget_discussion",
+          "user_input": "We can start with a basic package and scale as needed. This keeps initial costs low.",
+          "expected_ai_response": "That approach aligns with our budget constraints. Can you share any projections on how your solution will impact our operational costs?",
+          "metrics": {
+            "budget_alignment": 97,
+            "compliance_confidence": 80,
+            "politeness_perception": 100,
+            "professionalism_perception": 100,
+            "technical_fit": 98
+          }
+        },
+        {
+          "id": 6,
+          "stage": "closing",
+          "user_input": "Certainly. I'll include detailed projections in our proposal. Shall we proceed with setting up the initial implementation?",
+          "expected_ai_response": "Yes, let's move forward. Please send over the proposal outlining the next steps and timelines.",
+          "metrics": {
+            "interest": 97,
+            "budget_alignment": 87,
+            "technical_fit": 95,
+            "compliance_confidence": 93,
+            "politeness_perception": 79,
+            "professionalism_perception": 50
+          }
+        },
+        {
+          "id": 7,
+          "stage": "successful_closure",
+          "user_input": "Will do. Thank you for your time, Ms. Adams.",
+          "expected_ai_response": "Thank you, Olivia. Looking forward to reviewing the proposal.",
+          "metrics": {
+            "interest": 97,
+            "budget_alignment": 87,
+            "technical_fit": 95,
+            "compliance_confidence": 93,
+            "politeness_perception": 79,
+            "professionalism_perception": 50
+          }
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Disengagement due to Budget Constraints",
+      "description": "The client disengages after realizing the solution exceeds their budget.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Ethan from GlobalPay Tech. May I have a moment?",
+          "expected_ai_response": "Hello Ethan. I can spare a few minutes. Please proceed.",
+          "metrics": {
+            "interest": 75,
+            "trust": 35,
+            "politeness_perception": 69,
+            "professionalism_perception": 75
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer global payment solutions. What challenges are you facing?",
+          "expected_ai_response": "We're looking to expand internationally but are cautious about costs. Could you explain how your solution addresses scalability while being cost-effective?",
+          "metrics": {
+            "interest": 79,
+            "comprehension": 60,
+            "politeness_perception": 61,
+            "professionalism_perception": 73
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our platform simplifies international transactions. Would you like to discuss pricing?",
+          "expected_ai_response": "Yes, cost is a significant factor for us. Could you provide a detailed cost breakdown, including implementation and ongoing support?",
+          "metrics": {
+            "interest": 60,
+            "comprehension": 105,
+            "technical_fit": 100,
+            "politeness_perception": 51,
+            "professionalism_perception": 53,
+            "budget_alignment": 0
+          }
+        },
+        {
+          "id": 4,
+          "stage": "budget_discussion",
+          "user_input": "Our packages start at $100,000 annually, offering comprehensive services.",
+          "expected_ai_response": "That's beyond our current budget. Are there any more affordable options available?",
+          "metrics": {
+            "budget_alignment": 64,
+            "compliance_confidence": 74,
+            "politeness_perception": -3,
+            "professionalism_perception": 54,
+            "technical_fit": 75,
+            "frustration": 107
+          }
+        },
+        {
+          "id": 5,
+          "stage": "budget_discussion",
+          "user_input": "We can customize a plan, but there's a minimum commitment. Is that acceptable?",
+          "expected_ai_response": "Unfortunately, we cannot commit to that amount at this time. Thank you for understanding.",
+          "metrics": {
+            "budget_alignment": 50,
+            "compliance_confidence": 76,
+            "politeness_perception": 47,
+            "professionalism_perception": 50,
+            "technical_fit": 80,
+            "frustration": 83
+          }
+        },
+        {
+          "id": 6,
+          "stage": "disengagement",
+          "user_input": "I understand. If circumstances change, please let us know.",
+          "expected_ai_response": "Will do. Thank you for your time.",
+          "metrics": {
+            "budget_alignment": 50,
+            "compliance_confidence": 76,
+            "politeness_perception": 47,
+            "professionalism_perception": 50,
+            "technical_fit": 80,
+            "frustration": 83
+          }
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Disengagement due to Compliance Issues",
+      "description": "The client disengages after learning the solution doesn't meet compliance needs.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good day, Ms. Adams. This is Michael from PaySecure Inc. May I have a moment?",
+          "expected_ai_response": "Good day, Michael. Yes, go ahead.",
+          "metrics": {
+            "interest": 82,
+            "trust": 92,
+            "politeness_perception": 72,
+            "professionalism_perception": 58
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We provide secure payment platforms. What issues are you currently facing?",
+          "expected_ai_response": "We're concerned about compliance with international regulations. How does your solution address this?",
+          "metrics": {
+            "interest": 77,
+            "comprehension": 75,
+            "politeness_perception": 79,
+            "professionalism_perception": 56
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our platform ensures data security. Would you like to discuss technical details?",
+          "expected_ai_response": "Yes, especially regarding compliance standards. How does your solution handle compliance with international payment regulations?",
+          "metrics": {
+            "interest": 92,
+            "comprehension": 63,
+            "technical_fit": 71,
+            "politeness_perception": 89,
+            "professionalism_perception": 50
+          }
+        },
+        {
+          "id": 4,
+          "stage": "technical_deep_dive",
+          "user_input": "We focus on security but are still working towards full compliance in some regions.",
+          "expected_ai_response": "Compliance is a non-negotiable for us. Without it, we can't proceed. Thank you for your time.",
+          "metrics": {
+            "compliance_confidence": -7,
+            "technical_fit": 50,
+            "politeness_perception": 39,
+            "professionalism_perception": 46,
+            "budget_alignment": 82,
+            "frustration": 98
+          }
+        },
+        {
+          "id": 5,
+          "stage": "disengagement",
+          "user_input": "I understand. We'll contact you once we've achieved full compliance.",
+          "expected_ai_response": "Please do. Thank you.",
+          "metrics": {
+            "compliance_confidence": -7,
+            "technical_fit": 50,
+            "politeness_perception": 39,
+            "professionalism_perception": 46,
+            "budget_alignment": 82,
+            "frustration": 98
+          }
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Reiteration in Needs Assessment and Solution Presentation",
+      "description": "The client revisits needs assessment and solution presentation before closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good morning, Ms. Adams. This is Liam from PayFlow Tech. May I have a moment?",
+          "expected_ai_response": "Good morning, Liam. Yes, please proceed.",
+          "metrics": {
+            "interest": 85,
+            "trust": 35,
+            "politeness_perception": 52,
+            "professionalism_perception": 97
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer innovative payment solutions. What challenges are you experiencing?",
+          "expected_ai_response": "We're facing issues with transaction speeds and user experience. How does your solution help with these?",
+          "metrics": {
+            "interest": 72,
+            "comprehension": 46,
+            "politeness_perception": 68,
+            "professionalism_perception": 56
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our platform enhances speed and usability. Would you like more details?",
+          "expected_ai_response": "Yes, but I have some concerns about integration. How does your solution integrate with legacy systems?",
+          "metrics": {
+            "interest": 57,
+            "comprehension": 58,
+            "technical_fit": 56,
+            "politeness_perception": -10,
+            "professionalism_perception": -5,
+            "budget_alignment": -10
+          }
+        },
+        {
+          "id": 4,
+          "stage": "needs_assessment",
+          "user_input": "What specific integration challenges are you anticipating?",
+          "expected_ai_response": "Our legacy systems are complex. Compatibility is crucial. Can you tell me how your solution addresses this?",
+          "metrics": {
+            "interest": 86,
+            "comprehension": 82,
+            "politeness_perception": 60,
+            "professionalism_perception": 89
+          }
+        },
+        {
+          "id": 5,
+          "stage": "solution_presentation",
+          "user_input": "Our solution is designed to integrate with legacy systems. We can provide case studies.",
+          "expected_ai_response": "That would be helpful. Could you also explain the implementation process and the kind of support you offer during it?",
+          "metrics": {
+            "interest": 95,
+            "comprehension": 61,
+            "technical_fit": 95,
+            "politeness_perception": 80,
+            "professionalism_perception": 100
+          }
+        },
+        {
+          "id": 6,
+          "stage": "technical_deep_dive",
+          "user_input": "Absolutely. We offer comprehensive support and training.",
+          "expected_ai_response": "That's reassuring. Could you provide technical documentation or whitepapers for our team to review?",
+          "metrics": {
+            "compliance_confidence": 76,
+            "technical_fit": 67,
+            "politeness_perception": 51,
+            "professionalism_perception": 56,
+            "budget_alignment": 74,
+            "frustration": 63
+          }
+        },
+        {
+          "id": 7,
+          "stage": "closing",
+          "user_input": "Certainly. I'll send over the materials. Shall we proceed with a proposal?",
+          "expected_ai_response": "Yes, please send the proposal outlining the next steps and timelines.",
+          "metrics": {
+            "interest": 84,
+            "budget_alignment": 86,
+            "technical_fit": 95,
+            "compliance_confidence": 100,
+            "politeness_perception": 60,
+            "professionalism_perception": 69
+          }
+        },
+        {
+          "id": 8,
+          "stage": "successful_closure",
+          "user_input": "Will do. Thank you for your time.",
+          "expected_ai_response": "Thank you, Liam. Looking forward to reviewing the materials.",
+          "metrics": {
+            "interest": 84,
+            "budget_alignment": 86,
+            "technical_fit": 95,
+            "compliance_confidence": 100,
+            "politeness_perception": 60,
+            "professionalism_perception": 69
+          }
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "name": "Disengagement due to Technical Misfit",
+      "description": "The client disengages after realizing the solution doesn't technically fit.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Grace from OpenPay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello Grace. Yes, I can spare some time. Please proceed.",
+          "metrics": {
+            "interest": 87,
+            "trust": 79,
+            "politeness_perception": 55,
+            "professionalism_perception": 86
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer open-source payment platforms. What are your current needs?",
+          "expected_ai_response": "We're actually moving towards proprietary solutions for security reasons. Thank you for reaching out.",
+          "metrics": {
+            "interest": 42,
+            "comprehension": 42,
+            "politeness_perception": 47,
+            "professionalism_perception": 36,
+            "frustration": 75
+          }
+        },
+        {
+          "id": 3,
+          "stage": "disengagement",
+          "user_input": "I see. If your strategy changes, we'd be happy to assist.",
+          "expected_ai_response": "Thank you. We'll keep that in mind.",
+          "metrics": {
+            "interest": 42,
+            "comprehension": 42,
+            "politeness_perception": 47,
+            "professionalism_perception": 36,
+            "frustration": 75
+          }
+        }
+      ]
+    },
+    {
+      "id": 15,
+      "name": "Successful Sale with Repeated Budget Discussion",
+      "description": "The client is concerned about budget and discusses it multiple times before moving to closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Alex from Payment Solutions Corp. Do you have a moment?",
+          "expected_ai_response": "Hello Alex. Yes, I can spare a few minutes.",
+          "metrics": {
+            "interest": 38,
+            "trust": 91,
+            "politeness_perception": 82,
+            "professionalism_perception": 87
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer scalable payment solutions. What challenges are you facing?",
+          "expected_ai_response": "We're looking to improve scalability while keeping costs down. How does your solution support this?",
+          "metrics": {
+            "interest": 88,
+            "comprehension": 70,
+            "politeness_perception": 61,
+            "professionalism_perception": 71
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution enhances scalability and is cost-effective. Would you like more details?",
+          "expected_ai_response": "Yes, but I'm particularly interested in how this fits within our budget. Could you provide a detailed cost breakdown?",
+          "metrics": {
+            "interest": 62,
+            "comprehension": 55,
+            "technical_fit": 102,
+            "politeness_perception": 50,
+            "professionalism_perception": 100,
+            "budget_alignment": 34
+          }
+        },
+        {
+          "id": 4,
+          "stage": "budget_discussion",
+          "user_input": "We offer flexible pricing models to suit various budgets. Let's discuss options.",
+          "expected_ai_response": "That would be helpful. What options do you have, and what's the expected ROI?",
+          "metrics": {
+            "budget_alignment": 62,
+            "compliance_confidence": -10,
+            "politeness_perception": 108,
+            "professionalism_perception": 105,
+            "technical_fit": 109,
+            "frustration": 61
+          }
+        },
+        {
+          "id": 5,
+          "stage": "budget_discussion",
+          "user_input": "We have tiered packages and can customize a plan. What's your target budget?",
+          "expected_ai_response": "We aim to keep initial costs under $50,000. Are there options available within that range?",
+          "metrics": {
+            "budget_alignment": 105,
+            "compliance_confidence": 75,
+            "politeness_perception": 106,
+            "professionalism_perception": 58,
+            "technical_fit": 106,
+            "frustration": 68
+          }
+        },
+        {
+          "id": 6,
+          "stage": "budget_discussion",
+          "user_input": "We can work within that range. Shall we proceed with a proposal?",
+          "expected_ai_response": "Yes, please include all costs and potential ROI. Let's set up a meeting to discuss it further.",
+          "metrics": {
+            "budget_alignment": 99,
+            "compliance_confidence": 80,
+            "politeness_perception": 51,
+            "professionalism_perception": 98,
+            "technical_fit": 100
+          }
+        },
+        {
+          "id": 7,
+          "stage": "closing",
+          "user_input": "Absolutely. I'll prepare a detailed proposal. Would you like to schedule a follow-up meeting?",
+          "expected_ai_response": "Yes, let's meet next week to discuss the proposal.",
+          "metrics": {
+            "interest": 89,
+            "budget_alignment": 94,
+            "technical_fit": 94,
+            "compliance_confidence": 87,
+            "politeness_perception": 95,
+            "professionalism_perception": 68
+          }
+        },
+        {
+          "id": 8,
+          "stage": "successful_closure",
+          "user_input": "Great. I'll send over the proposal and meeting invite. Thank you for your time.",
+          "expected_ai_response": "Thank you, Alex. Looking forward to reviewing the proposal.",
+          "metrics": {
+            "interest": 89,
+            "budget_alignment": 94,
+            "technical_fit": 94,
+            "compliance_confidence": 87,
+            "politeness_perception": 95,
+            "professionalism_perception": 68
+          }
+        }
+      ]
+    },
+    {
+      "id": 16,
+      "name": "Successful Sale after Compliance Discussion",
+      "description": "The client moves to closing after a thorough compliance discussion.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is James from CompliancePay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello James. Thank you for reaching out. Could you please provide a brief overview of your offering and how it might relate to our needs?",
+          "metrics": {
+            "interest": 40,
+            "trust": 99,
+            "politeness_perception": 81,
+            "professionalism_perception": 93
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We specialize in payment solutions that prioritize regulatory compliance. What challenges are you facing?",
+          "expected_ai_response": "We're concerned about upcoming regulatory changes and how they might impact us. How does your solution address compliance in different regions?",
+          "metrics": {
+            "interest": 59,
+            "comprehension": 96,
+            "politeness_perception": 78,
+            "professionalism_perception": 81
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution adapts to regulatory changes automatically. Interested in more details?",
+          "expected_ai_response": "Yes, please. Specifically, how do you handle compliance with international payment regulations, and can you customize the platform for region-specific requirements?",
+          "metrics": {
+            "interest": 107,
+            "comprehension": 59,
+            "technical_fit": 106,
+            "politeness_perception": 102,
+            "professionalism_perception": 59,
+            "budget_alignment": -9
+          }
+        },
+        {
+          "id": 4,
+          "stage": "compliance_discussion",
+          "user_input": "We cover compliance across multiple jurisdictions, including customization for regional laws.",
+          "expected_ai_response": "That's impressive. How do you stay updated on regulatory changes, and how quickly can you implement necessary adjustments? Also, how does your solution handle data privacy regulations like GDPR?",
+          "metrics": {
+            "compliance_confidence": 110,
+            "budget_alignment": 103,
+            "technical_fit": 79,
+            "politeness_perception": -9,
+            "professionalism_perception": 109,
+            "frustration": 68
+          }
+        },
+        {
+          "id": 5,
+          "stage": "compliance_discussion",
+          "user_input": "Our system is fully GDPR-compliant, ensuring data is handled securely.",
+          "expected_ai_response": "Excellent. This aligns with our needs. Could you provide more details on customization options for our specific compliance requirements?",
+          "metrics": {
+            "compliance_confidence": 100,
+            "budget_alignment": 91,
+            "technical_fit": 98,
+            "politeness_perception": 89,
+            "professionalism_perception": 99
+          }
+        },
+        {
+          "id": 6,
+          "stage": "closing",
+          "user_input": "Certainly. Shall we proceed with an implementation plan?",
+          "expected_ai_response": "Yes, let's move forward. Please send over the necessary documents. I'd like to involve my technical team to address any remaining concerns.",
+          "metrics": {
+            "interest": 97,
+            "budget_alignment": 86,
+            "technical_fit": 86,
+            "compliance_confidence": 99,
+            "politeness_perception": 87,
+            "professionalism_perception": 78
+          }
+        },
+        {
+          "id": 7,
+          "stage": "successful_closure",
+          "user_input": "Will do. Thank you for your time, Ms. Adams.",
+          "expected_ai_response": "Thank you, James. We're excited to begin implementation.",
+          "metrics": {
+            "interest": 97,
+            "budget_alignment": 86,
+            "technical_fit": 86,
+            "compliance_confidence": 99,
+            "politeness_perception": 87,
+            "professionalism_perception": 78
+          }
+        }
+      ]
+    },
+    {
+      "id": 17,
+      "name": "Disengagement due to High Frustration",
+      "description": "The client becomes frustrated due to the salesperson's inability to answer questions.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good morning, Ms. Adams. This is Mark from FuturePay Tech. Do you have a moment?",
+          "expected_ai_response": "Good morning, Mark. Thank you for reaching out. Could you provide a brief overview of your offering?",
+          "metrics": {
+            "interest": 100,
+            "trust": 100,
+            "politeness_perception": 67,
+            "professionalism_perception": 79
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer cutting-edge payment solutions. What challenges are you facing?",
+          "expected_ai_response": "We're looking to improve scalability and need detailed technical information. How does your solution help with handling a growing number of transactions?",
+          "metrics": {
+            "interest": 81,
+            "comprehension": 49,
+            "politeness_perception": 56,
+            "professionalism_perception": 74
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our solution is the best in the market. It's fast and reliable.",
+          "expected_ai_response": "Could you provide specifics on how it improves scalability? Also, how does it integrate with our existing systems?",
+          "metrics": {
+            "interest": 103,
+            "comprehension": 50,
+            "technical_fit": 102,
+            "politeness_perception": -9,
+            "professionalism_perception": 110,
+            "budget_alignment": 63
+          }
+        },
+        {
+          "id": 4,
+          "stage": "solution_presentation",
+          "user_input": "It's designed to handle a lot of transactions without issues.",
+          "expected_ai_response": "I need more technical details to evaluate its suitability. Do you have documentation or can you elaborate on the architecture?",
+          "metrics": {
+            "interest": 108,
+            "comprehension": 57,
+            "technical_fit": 102,
+            "politeness_perception": 106,
+            "professionalism_perception": -7,
+            "budget_alignment": 68
+          }
+        },
+        {
+          "id": 5,
+          "stage": "solution_presentation",
+          "user_input": "Well, it's just really efficient. Trust me, it's great.",
+          "expected_ai_response": "If you can't provide detailed information, I'm afraid we can't proceed. Thank you for your time.",
+          "metrics": {
+            "interest": 45,
+            "comprehension": 102,
+            "technical_fit": 48,
+            "politeness_perception": 47,
+            "professionalism_perception": 47,
+            "budget_alignment": 73
+          }
+        },
+        {
+          "id": 6,
+          "stage": "disengagement",
+          "user_input": "Maybe we can set up a meeting with our technical team?",
+          "expected_ai_response": "Perhaps another time. Thank you for reaching out.",
+          "metrics": {
+            "interest": 45,
+            "comprehension": 102,
+            "technical_fit": 48,
+            "politeness_perception": 47,
+            "professionalism_perception": 47,
+            "budget_alignment": 73
+          }
+        }
+      ]
+    },
+    {
+      "id": 18,
+      "name": "Quick Closing due to High Urgency and Technical Fit",
+      "description": "The client urgently needs a solution that fits well technically and moves quickly to closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Sarah from SpeedPay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello Sarah. Actually, we're urgently seeking a scalable payment solution. Could you provide a brief overview?",
+          "metrics": {
+            "interest": 100,
+            "trust": 44,
+            "politeness_perception": 51,
+            "professionalism_perception": 94
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We specialize in rapid deployment of scalable payment systems. Shall we discuss implementation?",
+          "expected_ai_response": "Yes, time is of the essence. How quickly can you deploy, and how does your solution integrate with existing systems?",
+          "metrics": {
+            "interest": 105,
+            "comprehension": 33,
+            "politeness_perception": 107,
+            "professionalism_perception": 60,
+            "frustration": 61
+          }
+        },
+        {
+          "id": 3,
+          "stage": "closing",
+          "user_input": "We can deploy within a week and provide full integration support.",
+          "expected_ai_response": "That's excellent. Let's proceed immediately. What's the best way to move forward from here?",
+          "metrics": {
+            "interest": 80,
+            "budget_alignment": 83,
+            "technical_fit": 97,
+            "compliance_confidence": 80,
+            "politeness_perception": 75,
+            "professionalism_perception": 73
+          }
+        },
+        {
+          "id": 4,
+          "stage": "successful_closure",
+          "user_input": "We'll send over the agreement and start the onboarding process today.",
+          "expected_ai_response": "Thank you, Sarah. Looking forward to a swift implementation.",
+          "metrics": {
+            "interest": 80,
+            "budget_alignment": 83,
+            "technical_fit": 97,
+            "compliance_confidence": 80,
+            "politeness_perception": 75,
+            "professionalism_perception": 73
+          }
+        }
+      ]
+    },
+    {
+      "id": 19,
+      "name": "Disengagement after Technical Deep Dive",
+      "description": "The client loses interest after a technical deep dive reveals incompatibilities.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Good afternoon, Ms. Adams. This is Victor from TechPay Solutions. Do you have a moment?",
+          "expected_ai_response": "Good afternoon, Victor. Thank you for reaching out. Please go ahead.",
+          "metrics": {
+            "interest": 89,
+            "trust": 86,
+            "politeness_perception": 68,
+            "professionalism_perception": 60
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer advanced payment solutions. What challenges are you facing?",
+          "expected_ai_response": "We're looking to improve security and efficiency. How does your solution address these areas?",
+          "metrics": {
+            "interest": 75,
+            "comprehension": 55,
+            "politeness_perception": 73,
+            "professionalism_perception": 69
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our platform enhances security using blockchain technology.",
+          "expected_ai_response": "Could we dive into the technical details? Specifically, how does your blockchain solution integrate with existing systems to improve security?",
+          "metrics": {
+            "interest": 90,
+            "comprehension": 87,
+            "technical_fit": 64,
+            "politeness_perception": 51,
+            "professionalism_perception": 100
+          }
+        },
+        {
+          "id": 4,
+          "stage": "technical_deep_dive",
+          "user_input": "Certainly. We use a proprietary blockchain protocol.",
+          "expected_ai_response": "We prefer open-source protocols for transparency. How does your proprietary protocol compare in terms of security and scalability?",
+          "metrics": {
+            "compliance_confidence": 79,
+            "technical_fit": 105,
+            "politeness_perception": -1,
+            "professionalism_perception": 103,
+            "budget_alignment": 74,
+            "frustration": 106
+          }
+        },
+        {
+          "id": 5,
+          "stage": "technical_deep_dive",
+          "user_input": "Our protocol is closed-source but highly secure.",
+          "expected_ai_response": "Closed-source solutions don't align with our strategy. Thank you for your time.",
+          "metrics": {
+            "compliance_confidence": 68,
+            "technical_fit": 50,
+            "politeness_perception": 41,
+            "professionalism_perception": 50,
+            "budget_alignment": -1,
+            "frustration": 94
+          }
+        },
+        {
+          "id": 6,
+          "stage": "disengagement",
+          "user_input": "I understand. If you reconsider, we'd be happy to assist.",
+          "expected_ai_response": "Thank you, Victor. We'll keep it in mind.",
+          "metrics": {
+            "compliance_confidence": 68,
+            "technical_fit": 50,
+            "politeness_perception": 41,
+            "professionalism_perception": 50,
+            "budget_alignment": -1,
+            "frustration": 94
+          }
+        }
+      ]
+    },
+    {
+      "id": 20,
+      "name": "Successful Sale after Extended Discussion",
+      "description": "The client engages in an extended discussion before moving to closing.",
+      "turns": [
+        {
+          "id": 1,
+          "stage": "initial_contact",
+          "user_input": "Hello Ms. Adams, this is Emma from GlobalPay Solutions. Do you have a moment?",
+          "expected_ai_response": "Hello Emma. Yes, I can spare some time. Please proceed.",
+          "metrics": {
+            "interest": 57,
+            "trust": 63,
+            "politeness_perception": 61,
+            "professionalism_perception": 92
+          }
+        },
+        {
+          "id": 2,
+          "stage": "needs_assessment",
+          "user_input": "We offer global payment solutions. What challenges are you facing?",
+          "expected_ai_response": "We're expanding internationally and need a scalable payment system. How does your solution support global transactions?",
+          "metrics": {
+            "interest": 86,
+            "comprehension": 69,
+            "politeness_perception": 73,
+            "professionalism_perception": 66
+          }
+        },
+        {
+          "id": 3,
+          "stage": "solution_presentation",
+          "user_input": "Our platform supports international transactions efficiently.",
+          "expected_ai_response": "Can you provide technical details on how you handle currency conversions and integrate with our existing systems?",
+          "metrics": {
+            "interest": 80,
+            "comprehension": 92,
+            "technical_fit": 91,
+            "politeness_perception": 68,
+            "professionalism_perception": 60
+          }
+        },
+        {
+          "id": 4,
+          "stage": "technical_deep_dive",
+          "user_input": "We use real-time forex rates and support multiple currencies.",
+          "expected_ai_response": "How do you manage compliance across different regions? Are customization options available for region-specific requirements?",
+          "metrics": {
+            "compliance_confidence": 6,
+            "technical_fit": 99,
+            "politeness_perception": 58,
+            "professionalism_perception": 78
+          }
+        },
+        {
+          "id": 5,
+          "stage": "compliance_discussion",
+          "user_input": "We adhere to regional regulations and customize compliance settings.",
+          "expected_ai_response": "That's good. However, budget is a concern. Could you provide a detailed pricing structure, including implementation, training, and ongoing support?",
+          "metrics": {
+            "compliance_confidence": 66,
+            "budget_alignment": 76,
+            "technical_fit": 72,
+            "politeness_perception": 109,
+            "professionalism_perception": 52,
+            "frustration": 109
+          }
+        },
+        {
+          "id": 6,
+          "stage": "budget_discussion",
+          "user_input": "We offer flexible pricing. Let's discuss options.",
+          "expected_ai_response": "Please do. What options do you have, and what's the expected ROI?",
+          "metrics": {
+            "budget_alignment": 61,
+            "compliance_confidence": -1,
+            "politeness_perception": -5,
+            "professionalism_perception": 58,
+            "technical_fit": 110,
+            "frustration": 68
+          }
+        },
+        {
+          "id": 7,
+          "stage": "technical_deep_dive",
+          "user_input": "Also, our system integrates seamlessly with your current infrastructure.",
+          "expected_ai_response": "Integration ease is important. How long does deployment take, and what kind of support do you offer during the process?",
+          "metrics": {
+            "compliance_confidence": 79,
+            "technical_fit": 61,
+            "politeness_perception": 109,
+            "professionalism_perception": 56,
+            "budget_alignment": -2,
+            "frustration": 103
+          }
+        },
+        {
+          "id": 8,
+          "stage": "closing",
+          "user_input": "Deployment can be completed within four weeks. Shall we proceed?",
+          "expected_ai_response": "Yes, let's move forward. Please send over the proposal outlining the next steps and timelines.",
+          "metrics": {
+            "interest": 92,
+            "budget_alignment": 100,
+            "technical_fit": 80,
+            "compliance_confidence": 94,
+            "politeness_perception": 82,
+            "professionalism_perception": 74
+          }
+        },
+        {
+          "id": 9,
+          "stage": "successful_closure",
+          "user_input": "Thank you. I'll send the proposal today.",
+          "expected_ai_response": "Thank you, Emma. Looking forward to reviewing it.",
+          "metrics": {
+            "interest": 92,
+            "budget_alignment": 100,
+            "technical_fit": 80,
+            "compliance_confidence": 94,
+            "politeness_perception": 82,
+            "professionalism_perception": 74
+          }
+        }
+      ]
+    }
+  ]
+}
